@@ -83,3 +83,13 @@
 .statValue {
     font-weight: bold; /* Makes the data stand out */
 }
+.userButton{
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+  border-radius: 8px;
+}
+.userButton:hover {
+  background-color: #e1e1e1; /* Lighter color on hover */
+  
+}
