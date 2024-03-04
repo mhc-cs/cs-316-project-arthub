@@ -288,3 +288,34 @@
     transform: rotate(0deg);
   }
 }
+
+/* Existing styles for light theme or default styles */
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+  .topBar {
+    background-color: #333; /* Darker background for the top bar */
+    color: #fff; /* Lighter text color for better readability */
+  }
+
+  .topBarButton {
+    background-color: #555; /* Darker background for buttons */
+    color: #fff; /* Lighter text color */
+  }
+
+  .icon {
+    color: #aaa; /* Lighter icon color */
+  }
+
+  .profileContainer, .description, .card, .content {
+    background-color: #222; /* Darker background for main content areas */
+    color: #ccc; /* Lighter text color for better readability */
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.1); /* Slightly visible background for cards */
+    border-color: rgba(255, 255, 255, 0.2); /* Lighter border color */
+  }
+
+  /* Adjust other elements as needed to fit the dark theme */
+}

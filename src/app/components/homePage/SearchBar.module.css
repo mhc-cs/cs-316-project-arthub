@@ -37,3 +37,16 @@
     z-index: 10; /* Ensures the icon is above the input background */
   }
   
+  /* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+
+  .searchInput {
+    background-color: #333; /* Darker background for the input field */
+    color: #e0e0e0; /* Lighter text color for better readability */
+    border: 1px solid #555; /* Darker border color */
+  }
+
+  .icon {
+    color: #aaa; /* Lighter icon color for better visibility */
+  }
+}

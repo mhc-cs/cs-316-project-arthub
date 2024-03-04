@@ -4,8 +4,9 @@
     gap: 20px;
     padding: 20px;
     background-color: #f5f5f5;
-    max-width: calc(80vh * 4 / 3); 
-    margin-left: 10%;
+    max-width: 600px; /* Fixed max-width */
+    margin-left: auto; /* Centering the container */
+    margin-right: auto; /* Centering the container */
     margin-top: 5%;
     border-radius: 8px;
     overflow-y: auto; /* Makes the container scrollable */
@@ -47,5 +48,22 @@
     text-align: left; /* Aligns text to the left */
   }
   
-  /* Add or adjust styles as needed for responsiveness or theme */
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+  .feedContainer {
+    background-color: #333; /* Darker background for dark theme */
+    color: #e0e0e0; /* Lighter text for better readability */
+  }
+
+  .postItem {
+    border: 1px solid #555; /* Darker border for dark theme */
+  }
+
+  .userName, .postDescription {
+    color: #e0e0e0; 
+  }
+  .profilePic {
+    border: 2px solid #444; /* Slightly lighter border for visibility */
+  }
+}
   
