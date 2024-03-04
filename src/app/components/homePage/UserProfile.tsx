@@ -24,21 +24,29 @@ export default function UserProfile() {
       <img src={user.backgroundPic} alt="Background" className={styles.backgroundPic} />
       <img src={user.userProfilePic} alt="User Profile" className={styles.profilePic} />
 
+      
+      <button className={styles.userButton}>
       <h2 className={styles.userName}>
         <Link href={`/profile/${user.userName.toLowerCase().replace(/\s+/g, '-')}`}>
           {user.userName}
         </Link>
-      </h2>
+        </h2>
+      </button>
+      
       <p className={styles.userBio}>{user.userBio}</p>
       <p className={styles.userLocation}>{user.userLocation}</p>
 
       <div className={styles.userStats}>
-      <Link href={user.connectionsLink} className={styles.userConnections}>
-        Connections <span className={styles.statValue}>{user.userConnections}</span>
-      </Link>
-      <Link href={user.hashtagsLink} className={styles.userFollowedHashtags}>
-        Followed Hashtags <span className={styles.statValue}>{user.userFollowedHashtags}</span>
-      </Link>
+      <button className={styles.userButton}>
+        <Link href={user.connectionsLink} className={styles.userConnections}>
+         Connections <span className={styles.statValue}>{user.userConnections}</span>
+        </Link>
+      </button>
+      <button className={styles.userButton}>
+        <Link href={user.hashtagsLink} className={styles.userFollowedHashtags}>
+          Followed Hashtags <span className={styles.statValue}>{user.userFollowedHashtags}</span>
+        </Link>
+      </button>
       </div>
     </div>
   );
