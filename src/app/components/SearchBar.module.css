@@ -1,0 +1,39 @@
+.searchContainer {
+    display: flex;
+    align-items: center;
+    background-color: 'transparent'; 
+    padding: 0px;
+    border-radius: 8px; /* Rounded edges */
+    width: 25%;
+  }
+  .inputContainer {
+    position: relative;
+    width: 100%;
+    display: flex; /* If you want to use flex properties */
+    align-items: center;
+}
+  
+  .searchInput {
+    padding: 10px 10px 10px 40px; /* Makes room for the icon */
+    font-size: 14px; /* Slightly larger text */
+    border-radius: 8px; /* Rounded edges */
+    background-color: #f0f0f0; /* Light grey background */
+    border: 1px solid #ccc;
+    background-image: none;
+  }
+  
+  .searchInput:focus {
+    outline: none; /* Removes the outline on focus */
+  }
+  
+  
+  .icon {
+    position: absolute;
+    color: #777; /* Icon color */
+    left: 12px; 
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Ensures precise centering */
+    font-size: 15px;
+    z-index: 10; /* Ensures the icon is above the input background */
+  }
+  
