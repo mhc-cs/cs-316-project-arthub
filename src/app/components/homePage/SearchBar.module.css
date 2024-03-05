@@ -11,6 +11,7 @@
     width: 100%;
     display: flex; /* If you want to use flex properties */
     align-items: center;
+    border-radius: 8px; /* Rounded edges */
 }
   
   .searchInput {
@@ -21,12 +22,9 @@
     border: 1px solid #ccc;
     background-image: none;
   }
-  
   .searchInput:focus {
     outline: none; /* Removes the outline on focus */
   }
-  
-  
   .icon {
     position: absolute;
     color: #777; /* Icon color */
@@ -37,16 +35,28 @@
     z-index: 10; /* Ensures the icon is above the input background */
   }
   
-  /* Dark theme adjustments */
+/* Enforcing light theme styles under dark theme preference */
 @media (prefers-color-scheme: dark) {
-
-  .searchInput {
-    background-color: #333; /* Darker background for the input field */
-    color: #e0e0e0; /* Lighter text color for better readability */
-    border: 1px solid #555; /* Darker border color */
+  .searchContainer {
+    background-color: 'transparent'; 
   }
-
+  .inputContainer {
+    background-color: 'transparent'; 
+}
+  
+  .searchInput {
+    padding: 10px 10px 10px 40px; /* Makes room for the icon */
+    font-size: 14px; /* Slightly larger text */
+    border-radius: 0px; /* Rounded edges */
+    background-color: #dfe3e4; /* Light grey background */
+    border: 1px solid #ccc;
+    background-image: none;
+    color: #000;
+  }
+  .searchInput:focus {
+    outline: none; /* Removes the outline on focus */
+  }
   .icon {
-    color: #aaa; /* Lighter icon color for better visibility */
+    color: #777; /* Icon color */
   }
 }

@@ -91,32 +91,39 @@ border-radius: 8px;
 }
 .userButton:hover {
 background-color: #e1e1e1; /* Lighter color on hover */
-
 }
 
-/* Dark theme adjustments */
+/* Ensuring light theme appearance regardless of dark mode preference */
 @media (prefers-color-scheme: dark) {
-  .profileContainer {
-    background-color: #2a2a2a; /* Darker background for dark theme */
-    border: 1px solid #444; /* Darker border for better contrast */
-    color: #ddd; /* Lighter text for better readability */
+  .profileContainer,
+  .backgroundPic,
+  .profilePic,
+  .userName,
+  .userBio,
+  .userLocation,
+  .userStats,
+  .statLink,
+  .statValue,
+  .userButton {
+    background-color: #f0f0f0;
+    color: #000; 
   }
 
-  .profilePic {
-    border: 1px solid #555; /* Adjusting border color for dark theme */
-  }
-
-  .userName a, .statLink {
-    color: #ddd; /* Ensuring links are visible against the dark background */
-  }
-  
-  .statLink:hover {
-    text-decoration: underline; /* Maintain underline on hover for links */
-  }
-
-  .postInput {
-    background-color: #333; /* Darker background for input */
-    color: #ccc; /* Lighter color for text inside input */
-    border: 1px solid #555; /* Darker border for input */
-  }
+  .userButton{
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+    border-radius: 8px;
+    }
+    .userButton:hover,
+    .statLink:hover {
+    background-color: #e1e1e1;
+    }
+    .statLink {
+      display: flex;
+      justify-content: space-between; /* Text on the left, data on the right */
+      width: 100%;
+      text-decoration: none; 
+      color: inherit; 
+    }
 }

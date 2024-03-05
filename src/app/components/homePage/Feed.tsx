@@ -36,6 +36,10 @@ const Feed = () => {
 
   return (
     <div className={styles.feedContainer}>
+
+      <div className={styles.postingSection}>
+        <input type="text" placeholder="Write a post" className={styles.postInput} />
+      </div>
       {posts.map((post) => (
         <div key={post.id} className={styles.postItem}>
           <div className={styles.postHeader}>

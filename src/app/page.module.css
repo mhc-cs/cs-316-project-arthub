@@ -9,7 +9,6 @@
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 .sidebar {
   flex: 1; 
@@ -31,7 +30,7 @@
   z-index: 1000; /* Ensure it sits above other content */
   display: flex;
   align-items: center;
-  background-color: #B6D0E2; 
+  background-color: #C0A0C8; 
   padding: 10px 20px; /* Adjust padding as needed */
   gap: 20px; /* Space between items */
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -289,33 +288,76 @@
   }
 }
 
-/* Existing styles for light theme or default styles */
-
-/* Dark theme adjustments */
 @media (prefers-color-scheme: dark) {
+  .searchBarContainer, .topBarButton, .icon, .layoutContainer, 
+  .description, .description a, .description p, .code, .grid, .card, 
+  .card span, .card h2, .card p, .center, .center::before, .center::after, 
+  .logo, .profileContainer, .backgroundPic, .profilePic, .userName, 
+  .userName a, .userBio, .userLocation, .userStats, .statLink, 
+  .statLink:hover, .statValue, .postingSection, .smallProfilePic, .postInput {
+    /* Reapply light theme styles */
+    background-color: #dfe3e4; /* Example: setting background to light for all elements */
+    color: #000; /* Example: setting text color to dark for readability */
+  }.main {
+    display: flex;
+    flex-direction: row; /* Aligns sidebar and content horizontally */
+    justify-content: space-between;
+    align-items: center;
+    padding: 6rem;
+    min-height: 100vh;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .sidebar {
+    flex: 1; 
+    max-width: 240px;
+    min-width: 200px; 
+  }
+  
+  .mainContent {
+    flex: 3; /* Adjust based on your design */
+    display: flex;
+    flex-direction: column;
+  }
+  
   .topBar {
-    background-color: #333; /* Darker background for the top bar */
-    color: #fff; /* Lighter text color for better readability */
+    position: fixed; /* Fix the position relative to the viewport */
+    top: 0; /* Align the top edge of the element with the top of the viewport */
+    left: 0; /* Align the left edge of the element with the left of the viewport */
+    width: 100%; /* Ensure it spans the full width of the viewport */
+    z-index: 1000; /* Ensure it sits above other content */
+    display: flex;
+    align-items: center;
+    background-color: #C0A0C8; 
+    padding: 10px 20px; /* Adjust padding as needed */
+    gap: 20px; /* Space between items */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
-
   .topBarButton {
-    background-color: #555; /* Darker background for buttons */
-    color: #fff; /* Lighter text color */
+    background-color: #dfe3e4; /* Light grey background */
+    border: 1px solid #ccc;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px; /* Rounded edges for buttons */
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    margin-right: 1%;
   }
-
+  
+  .topBarButton:hover {
+    background-color: #f0f0f0; /* Lighter color on hover */
+  }
   .icon {
-    color: #aaa; /* Lighter icon color */
+    color: #777; /* Icon color */
+    margin-right: 5px;
   }
-
-  .profileContainer, .description, .card, .content {
-    background-color: #222; /* Darker background for main content areas */
-    color: #ccc; /* Lighter text color for better readability */
+  
+  .layoutContainer {
+    margin-top: 3%;
+    display: flex;
   }
-
-  .card {
-    background: rgba(255, 255, 255, 0.1); /* Slightly visible background for cards */
-    border-color: rgba(255, 255, 255, 0.2); /* Lighter border color */
-  }
-
-  /* Adjust other elements as needed to fit the dark theme */
-}
+}  
