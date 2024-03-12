@@ -1,13 +1,13 @@
 //import Image from 'next/image';
 import styles from './page.module.css';
 
-import ArtistFeed from './components/homePage/Feed';
-import SearchBar from './components/homePage/SearchBar';
-import UserProfile from './components/homePage/UserProfile';
+import ArtistFeed from '../components/Feed';
+import SearchBar from '../components/SearchBar';
+import UserProfile from '../components/UserProfile';
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-export default function Home() {
+export default function homePage() {
   return (
     <div className={styles.container}>
     
