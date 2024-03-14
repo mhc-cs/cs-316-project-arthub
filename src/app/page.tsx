@@ -1,7 +1,6 @@
-//import Image from 'next/image';
 import styles from './page.module.css';
 
-import ArtistFeed from '../components/Feed';
+import Feed from '../components/Feed';
 import SearchBar from '../components/SearchBar';
 import UserProfile from '../components/UserProfile';
 
@@ -31,11 +30,9 @@ export default function homePage() {
         <UserProfile />
       </aside>
     <div className={styles.mainContent}>
-      <header className={styles.header}>
-      </header>
 
       <section className={styles.content}>
-        <ArtistFeed />
+        <Feed />
       </section>
 
       </div>

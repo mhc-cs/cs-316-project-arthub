@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import styles from './UserProfile.module.css';
+import styles from '../styles/UserProfile.module.css';
 import Link from 'next/link';
 import router, { useRouter } from 'next/router';
 

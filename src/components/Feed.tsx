@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 
-import styles from './Feed.module.css';
+import styles from '../styles/Feed.module.css';
 
 const Feed = () => {
   // Initialize the posts array with some dummy data
@@ -22,24 +22,15 @@ const Feed = () => {
       description: 'Inspired by the beauty of nature.',
     },
   ]);
-
-  // useEffect(() => {
-  //   // Simulate fetching posts from an API
-  //   const fetchPosts = async () => {
-  //     const response = await fetch('https://example.com/api/posts');
-  //     const data = await response.json();
-  //     setPosts(data);
-  //   };
-
-  //   fetchPosts();
-  // }, []); // Empty dependency array means this effect runs once on mount
-
+  
   return (
     <div className={styles.feedContainer}>
 
-      <div className={styles.postingSection}>
+<div className={styles.postingSection}>
         <input type="text" placeholder="Write a post" className={styles.postInput} />
       </div>
+
+
       {posts.map((post) => (
         <div key={post.id} className={styles.postItem}>
           <div className={styles.postHeader}>
@@ -56,4 +47,3 @@ const Feed = () => {
 
 
 export default Feed;
-  

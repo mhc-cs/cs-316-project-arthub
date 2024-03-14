@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './SearchBar.module.css';
+import styles from '../styles/SearchBar.module.css';
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 

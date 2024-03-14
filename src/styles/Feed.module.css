@@ -1,0 +1,120 @@
+.feedContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  max-width: 600px;
+  /* Fixed max-width */
+  margin-left: auto;
+  /* Centering the container */
+  margin-right: auto;
+  /* Centering the container */
+  margin-top: 5%;
+  border-radius: 8px;
+  overflow-y: auto;
+  /* Makes the container scrollable */
+}
+
+.postItem {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.postHeader {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.profilePic {
+  width: 50px;
+  /* Adjust size as needed */
+  height: 50px;
+  /* Adjust size as needed */
+  border-radius: 50%;
+  /* Makes the image circular */
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.userName {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.postImage {
+  width: 100%;
+  max-width: 600px;
+  object-fit: contain;
+  /* Cover the area of the container without distorting the image */
+}
+
+.postDescription {
+  padding: 15px;
+  text-align: left;
+  /* Aligns text to the left */
+}
+
+.postingSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* Adjust space between profile picture and input field */
+  margin-top: 20px;
+  /* Spacing from the rest of the profile content */
+}
+
+.postInput {
+  flex-grow: 1;
+  /* Input field takes up remaining space */
+  padding: 10px;
+  border: 1px solid #ccc;
+  /* Styling the border of the input */
+  border-radius: 20px;
+  /* Rounded corners for the input field */
+  outline: none;
+  /* Remove the default focus outline */
+}
+
+/* Enforcing light theme styles under dark theme preference */
+@media (prefers-color-scheme: dark) {
+
+  .feedContainer,
+  .postItem,
+  .postHeader,
+  .profilePic,
+  .userName,
+  .postImage,
+  .postDescription,
+  .postingSection,
+  .postInput {
+    /* Reapply light theme styles for consistency */
+    background-color: #f5f5f5;
+    /* For .feedContainer and elements with a background */
+    color: #000;
+    /* For text elements like .userName and .postDescription */
+
+  }
+
+  .feedContainer {
+    border: 1px solid #ddd;
+    /* For elements like .postItem and .postInput */
+  }
+
+  .profilePic {
+    /* If the .profilePic has a specific light theme style that needs to be reapplied */
+    border: 1px solid #ccc;
+  }
+
+  .postInput {
+    /* Ensuring the input field specifically maintains light theme appearance */
+    background-color: #fff;
+    /* White background for input field */
+    color: #000;
+    /* Dark text for input */
+    border: 1px solid #ccc;
+    /* Styling the border of the input */
+  }
+}
