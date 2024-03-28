@@ -6,6 +6,8 @@ import UserProfile from '../components/UserProfile';
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
+import Link from 'next/link';
+
 export default function homePage() {
   return (
     <div className={styles.container}>
@@ -17,9 +19,13 @@ export default function homePage() {
         <button className={styles.topBarButton}>
           <i className={`fas fa-user-friends ${styles.icon}`}></i> My Network
         </button>
+
+        <Link href="/messagesPage">
         <button className={styles.topBarButton}>
           <i className={`fa-solid fa-message ${styles.icon}`}></i> Messages
         </button>
+        </Link>
+
         <button className={styles.topBarButton}>
           <i className={`fa-solid fa-bell ${styles.icon}`}></i> Notifications
         </button>
