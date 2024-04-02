@@ -7,6 +7,7 @@ import UserPortfolio from '../../components/UserPortfolio';
 import UserFeed from '../../components/UserFeed';
 import SearchBar from '../../components/SearchBar';
 import UserProfile from '../../components/UserProfile';
+import { signIn } from 'next-auth/react';
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -30,6 +31,12 @@ export default function ProfilePage() {
         </button>
         <button className={styles.topBarButton}>
           <i className={`fa-solid fa-bell ${styles.icon}`}></i> Notifications
+        </button>
+        {/** Button for  */}
+        <button
+          onClick={() => signIn()}
+          className='text-sm font-semibold text-blue-500'>
+          Log in
         </button>
       </div>
 
