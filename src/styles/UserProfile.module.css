@@ -6,7 +6,8 @@
   padding: 20px;
   gap: 10px; 
   background-color: #f0f0f0;
-  width: 300px;
+  width: 120%; /* Start with a relative width */
+  max-width: 300px; /* But don't exceed 300px */
   border-radius: 8px;
   border: 1px solid #ccc;
 
@@ -51,6 +52,7 @@
 
 .userBio {
   font-size: 14px;
+  text-overflow: 'ellipsis',
 }
 
 .userLocation {
@@ -126,4 +128,18 @@ background-color: #e1e1e1; /* Lighter color on hover */
       text-decoration: none; 
       color: inherit; 
     }
+}
+
+/* Adjust the width on smaller screens */
+@media (max-width: 768px) {
+  .profileContainer {
+    width: 80%; /* Increase width on smaller screens if needed */
+  }
+}
+
+/* Adjustments for very small screens */
+@media (max-width: 480px) {
+  .profileContainer {
+    width: 95%; /* Let it occupy more space on very small screens */
+  }
 }

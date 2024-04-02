@@ -66,6 +66,7 @@
   font-size: 14px;
   transition: background-color 0.3s;
   margin-right: 1%;
+  max-width: 125px;
 }
 
 .topBarButton:hover {
