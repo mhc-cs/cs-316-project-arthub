@@ -36,53 +36,101 @@
     font-size: 16px;
     font-weight: bold;
   }
-  
   .postImage {
     width: 100%;
-    max-width: 600px; 
-    object-fit: contain; /* Cover the area of the container without distorting the image */
+    max-width: 600px;
+    /* Cover the area of the container without distorting the image */
+    object-fit: contain;
   }
   
   .postDescription {
     padding: 15px;
-    text-align: left; /* Aligns text to the left */
+    text-align: left;
   }
-
+  
   .postingSection {
     display: flex;
     align-items: center;
-    gap: 10px; /* Adjust space between profile picture and input field */
-    margin-top: 20px; /* Spacing from the rest of the profile content */
+    gap: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: #fff;
+    margin-top: 20px;
   }
   
   .postInput {
-    flex-grow: 1; /* Input field takes up remaining space */
+    flex-grow: 1;
     padding: 10px;
-    border: 1px solid #ccc; /* Styling the border of the input */
-    border-radius: 20px; /* Rounded corners for the input field */
-    outline: none; /* Remove the default focus outline */
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+  }
+  
+  .previewContainer {
+    display: flex;
+    gap: 10px; 
+    margin-right: auto; /* Push other elements to the right */
+  }
+  .previewImage {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 10px; 
+  }
+  
+  .addButton, .postButton {
+    padding: 10px 20px; 
+    border: none;
+    background-color: #C0A0C8; 
+    color: white;
+    border-radius: 20px;
+    cursor: pointer; 
+  }
+  .addButton:hover, .postButton:hover {
+    background-color: #A885A8; 
+  }
+  .dropzone {
+    display: flex; 
+    align-items: center;
+  }
+  
+  .dropzoneText {
+    margin-right: 10px; 
   }
   
 /* Enforcing light theme styles under dark theme preference */
 @media (prefers-color-scheme: dark) {
   .feedContainer, .postItem, .postHeader, .profilePic, .userName, .postImage, .postDescription, .postingSection, .postInput {
-    /* Reapply light theme styles for consistency */
-    background-color: #f5f5f5; /* For .feedContainer and elements with a background */
-    color: #000; /* For text elements like .userName and .postDescription */
+    background-color: #f5f5f5; 
+    color: #000; 
     
   }
   .feedContainer{
-  border: 1px solid #ddd; /* For elements like .postItem and .postInput */
+  border: 1px solid #ddd; 
   }
   .profilePic {
-    /* If the .profilePic has a specific light theme style that needs to be reapplied */
     border: 1px solid #ccc;
   }
 
   .postInput {
-    /* Ensuring the input field specifically maintains light theme appearance */
-    background-color: #fff; /* White background for input field */
-    color: #000; /* Dark text for input */
-    border: 1px solid #ccc; /* Styling the border of the input */
+    background-color: #fff;
+    color: #000; 
+    border: 1px solid #ccc; 
   }
+  
+  .postingSection {
+    border: 1px solid #ccc;
+    background-color: #fff;
+  }
+  
+  .addButton, .postButton {
+    border: none;
+    background-color: #C0A0C8; 
+    color: white;
+  }
+  .addButton:hover, .postButton:hover {
+    background-color: #A885A8; 
+  }
+  
 }

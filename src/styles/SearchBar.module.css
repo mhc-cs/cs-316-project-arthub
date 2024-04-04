@@ -9,15 +9,15 @@
   .inputContainer {
     position: relative;
     width: 100%;
-    display: flex; /* If you want to use flex properties */
+    display: flex;
     align-items: center;
-    border-radius: 8px; /* Rounded edges */
+    border-radius: 8px; 
 }
   
   .searchInput {
-    padding: 10px 10px 10px 40px; /* Makes room for the icon */
-    font-size: 14px; /* Slightly larger text */
-    border-radius: 8px; /* Rounded edges */
+    padding: 10px 10px 10px 40px;
+    font-size: 14px;
+    border-radius: 8px; 
     background-color: #f0f0f0; /* Light grey background */
     border: 1px solid #ccc;
     background-image: none;
