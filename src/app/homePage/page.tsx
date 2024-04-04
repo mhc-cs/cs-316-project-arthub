@@ -1,13 +1,14 @@
-//import Image from 'next/image';
 import styles from './page.module.css';
 
-import ArtistFeed from '../../components/homePage/Feed';
-import SearchBar from '../../components/homePage/SearchBar';
-import UserProfile from '../../components/homePage/UserProfile';
+import Feed from '../../components/Feed';
+import SearchBar from '../../components/SearchBar';
+import UserProfile from '../../components/UserProfile';
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-export default function Home() {
+import Link from 'next/link';
+
+export default function homePage() {
   return (
     <div className={styles.container}>
     
@@ -18,9 +19,13 @@ export default function Home() {
         <button className={styles.topBarButton}>
           <i className={`fas fa-user-friends ${styles.icon}`}></i> My Network
         </button>
+
+        <Link href="/messagesPage">
         <button className={styles.topBarButton}>
           <i className={`fa-solid fa-message ${styles.icon}`}></i> Messages
         </button>
+        </Link>
+
         <button className={styles.topBarButton}>
           <i className={`fa-solid fa-bell ${styles.icon}`}></i> Notifications
         </button>
@@ -31,11 +36,9 @@ export default function Home() {
         <UserProfile />
       </aside>
     <div className={styles.mainContent}>
-      <header className={styles.header}>
-      </header>
 
       <section className={styles.content}>
-        <ArtistFeed />
+        <Feed />
       </section>
 
       </div>
