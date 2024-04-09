@@ -1,42 +1,22 @@
+'use client'
+
+import React from 'react';
 import styles from './page.module.css';
+import signInWithGoogle from './interactiveButton';
 
-import Feed from '../components/Feed';
-import SearchBar from '../components/SearchBar';
-import UserProfile from '../components/UserProfile';
+// Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const auth = getAuth(app);
 
-import '@fortawesome/fontawesome-free/css/all.min.css';
+const FirstScreen = () => {
 
-export default function homePage() {
   return (
     <div className={styles.container}>
-    
-      <div className={styles.topBar}>
-      <div className={styles.searchBarContainer}>
-        <SearchBar />
-      </div>
-        <button className={styles.topBarButton}>
-          <i className={`fas fa-user-friends ${styles.icon}`}></i> My Network
-        </button>
-        <button className={styles.topBarButton}>
-          <i className={`fa-solid fa-message ${styles.icon}`}></i> Messages
-        </button>
-        <button className={styles.topBarButton}>
-          <i className={`fa-solid fa-bell ${styles.icon}`}></i> Notifications
-        </button>
-      </div>
-  
-    <div className={styles.layoutContainer}>
-      <aside className={styles.sidebar}>
-        <UserProfile />
-      </aside>
-    <div className={styles.mainContent}>
-
-      <section className={styles.content}>
-        <Feed />
-      </section>
-
-      </div>
+      <button onClick={signInWithGoogle} className={styles.topBarButton}>
+        Sign in with Google
+      </button>
     </div>
-  </div>  
   );
-}
+};
+
+export default FirstScreen;
