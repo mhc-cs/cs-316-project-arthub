@@ -1,134 +1,61 @@
-'use client'
+// import React from 'react'
+// import ChatBox from '@/components/ChatBox'
+// import SendMessage from '@/components/SendMessage'
 
-import React, { useState, KeyboardEvent } from 'react';
-import styles from './page.module.css';
+// const page = () => {
+//   return (
+//     <div>
+//       <ChatBox />
+//       <SendMessage />
+//     </div>
+//   )
+// }
 
-import SearchBar from '../../components/SearchBar';
+// export default page
 
+"use client";
 
-{/* <div 
-key={message.id} 
-style={{ 
-  margin: '10px', 
-  textAlign: index === 0 ? 'left' : 'right' 
-  
-}}
-> */}
+import { Spacer } from "@nextui-org/react";
+import React from "react";
+import { LuAlignRight } from "react-icons/lu";
+import ChatSidebar from "@/components/ChatSideBar";
 
-interface User {
-  id: number;
-  name: string;
-}
-
-interface Message {
-  id: number;
-  text: string;
-  //fromMe: boolean;
-}
-
-// Define the structure for the messages object
-interface Messages {
-  [key: number]: Message[];
-}
-
-const users: User[] = [
-  { id: 1, name: 'John Doe' },
-  { id: 2, name: 'Olga Gol' },
-  { id: 3, name: 'Celia' },
-];
-
-const initialMessages: Messages = {
-  1: [{ id: 1, text: 'Great collab!'}],
-  2: [{ id: 1, text: 'Hi! How are you?'}],
-  3: [{ id: 1, text: 'Good morning!'}],
-};
-
-const MessagesPage: React.FC = () => {
-  //const [activeUser, setActiveUser] = useState<number>(users[0].id);
-  
-    const [activeUser, setActiveUser] = useState<number>(users[0].id);
-    const [userMessages, setUserMessages] = useState<Messages>({...initialMessages});
-    const [newMessage, setNewMessage] = useState<string>('');
-  
-    const handleSendMessage = () => {
-      if (!newMessage.trim()) return; // Ignore empty messages
-  
-      const newMessageObj: Message = {
-        id: Math.random(), 
-        text: newMessage,
-        //fromMe: true,
-      };
-  
-      const updatedMessages = {...userMessages, [activeUser]: [...userMessages[activeUser], newMessageObj]};
-      setUserMessages(updatedMessages);
-      setNewMessage(''); // Reset input field
-    };
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Enter') {
-        handleSendMessage();
-      }
-    };
-
+const DefaultChatPage = () => {
+  const [showSidebar, setShowSidebar] = React.useState(false);
   return (
-    <div className={styles.container}>
-      <div className={styles.topBar}>
-        <div className={styles.searchBarContainer}>
-          <SearchBar />
+    <div className="flex flex-col  w-full h-screen ">
+      <div className="flex  md:hidden text-xl p-2 bg-gray-100 w-full flex-end ">
+        <button
+          className="p-4 bg-gray-200 text-gray-700  rounded-full "
+          onClick={() => setShowSidebar(!showSidebar)}
+        >
+          <LuAlignRight />
+        </button>
+        <Spacer y={2} />
+
+        {/* show sidebar with animation  */}
+        <div
+          className={`fixed top-0 right-0 h-screen w-3/4 bg-white z-50  transition-transform duration-300 ease-in-out transform ${
+            showSidebar ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <ChatSidebar />
         </div>
-        <button className={styles.topBarButton}>
-          <i className={`fas fa-user-friends ${styles.icon}`}></i> My Network
-        </button>
-        <button className={styles.topBarButton}>
-          <i className={`fa-solid fa-message ${styles.icon}`}></i> Messages
-        </button>
-        <button className={styles.topBarButton}>
-          <i className={`fa-solid fa-bell ${styles.icon}`}></i> Notifications
-        </button>
       </div>
-
-      <div className={styles.layoutContainer}>
-        <aside className={styles.sidebar}>
-          <div className={styles.messagingSidebar}>
-            <h2>Messaging</h2>
-            <ul>
-              {users.map((user) => (
-                <li key={user.id} onClick={() => setActiveUser(user.id)} style={{ cursor: 'pointer', padding: '10px', borderBottom: '1px solid #ccc' }}>
-                  {user.name}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </aside>
-
-        <div className={styles.mainContent}>
-          <div className={styles.messagesContainer}>
-          {userMessages[activeUser]?.map((message, index) => (
-            <div 
-            key={message.id} 
-            className={`${styles.message} ${index === 0 ? styles.messageReceived : styles.messageSent}`}
-          >
-            <p>{message.text}</p>
-          </div>
-            ))}
-          </div>
-
-          <div className={styles.messageInputContainer}>
-            <input
-              className={styles.messageInput}
-              type="text"
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Type a message..."
-            />
-            <button className={styles.sendButton} onClick={handleSendMessage}>Send</button>
-          </div>
-
+      <div  className="flex items-center justify-center h-full w-full">
+        <div className="flex flex-col text-center items-center justify-center p-8">
+          <h1 className="text-4xl font-bold mb-4">Welcome to Cloud Chat App</h1>
+          <p className="text-lg mb-8">
+            Start chatting by selecting a user from the sidebar.
+          </p>
+          <Spacer y={8} />
+          <p className=" mb-8 p-2 bg-violet-100 text-violet-600 rounded-full w-fit">
+            Developed by Piyush Kalyan.
+          </p>
         </div>
       </div>
     </div>
   );
 };
 
-export default MessagesPage;
+export default DefaultChatPage;

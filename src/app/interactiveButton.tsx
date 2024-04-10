@@ -1,9 +1,6 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import firebaseConfig from '../firebase/firebaseConfig'; // Adjust the path to your Firebase config
+import {  GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth } from '../firebase/firebaseConfig'; // Adjust the path to your Firebase config
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 
 const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
