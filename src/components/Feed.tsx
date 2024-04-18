@@ -2,129 +2,131 @@
 
 import React, { useState, useEffect } from 'react';
 import { FileWithPath, useDropzone } from 'react-dropzone';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, updateDoc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { db, auth } from '../firebase/firebaseConfig';
-import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { query, onSnapshot } from "firebase/firestore";
 
 
 
 import styles from '../styles/Feed.module.css';
 
 type Post = {
-  id: string; // Ensure this matches the type Firestore uses for document IDs
+  id: string;
   userName: string;
   userProfilePic: string;
   mediaContent: string;
   description: string;
 };
-// Extend the FileWithPath type to include the preview URL
-type FileWithPreview = FileWithPath & {
-  preview: string;
-  mediaContent?: string;
+type FileWithPreview = {
+  file: File; // Explicit File object
+  preview: string; // URL for previewing the image
+  mediaContent?: string; // URL from storage
 };
 
+
 const Feed = () => {
-  // Initialize the posts array with some dummy data
-  const [posts, setPosts] = useState([
-    {
-      id: '1',
-      userName: 'Artist One',
-      userProfilePic: 'https://placehold.co/50x50',
-      mediaContent: 'https://placehold.co/600x400',
-      description: 'This is my latest artwork!',
-    },
-    {
-      id: '2',
-      userName: 'Artist Two',
-      userProfilePic: 'https://placehold.co/50x50',
-      mediaContent: 'https://placehold.co/600x400',
-      description: 'Inspired by the beauty of nature.',
-    },
-  ]);
 
-  // State to hold the preview URLs of the selected images
+  const [posts, setPosts] = useState<Post[]>([]);
   const [filePreviews, setFilePreviews] = useState<FileWithPreview[]>([]);
+  const [postText, setPostText] = useState('');
+  const [user] = useAuthState(auth);
 
-  // // Function to handle file drop
-  // const onDrop = (acceptedFiles: FileWithPath[]) => {
-  //   // Create a preview URL for each file
-  //   const previews: FileWithPreview[] = acceptedFiles.map(file => ({
-  //     ...file,
-  //     preview: URL.createObjectURL(file)
-  //   }));
-
-  //   // Update state to include the new previews
-  //   setFilePreviews(previews);
-
-  // };
-  const onDrop = (acceptedFiles: FileWithPath[]) => {
-    const file = acceptedFiles[0]; // Assuming you only handle one file for simplicity
-    const storage = getStorage();
-    const storageReference = storageRef(storage, `uploads/${file.name}`);
-    uploadBytes(storageReference, file).then((snapshot) => {
-      getDownloadURL(snapshot.ref).then((downloadURL) => {
-        const previewWithMediaContent: FileWithPreview = {
-          ...file,
-          preview: URL.createObjectURL(file),
-          mediaContent: downloadURL, // The actual URL obtained from Firebase Storage
-        };
-        setFilePreviews([previewWithMediaContent]); // This example only updates the first item for simplicity
-      });
+  useEffect(() => {
+    const q = query(collection(db, "posts")); // Define a query against the collection.
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const postsArray = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        userName: doc.data().userName,
+        userProfilePic: doc.data().userProfilePic,
+        mediaContent: doc.data().mediaContent,
+        description: doc.data().description,
+        timestamp: doc.data().timestamp?.toDate().toString() // Handle date conversion if necessary
+      }));
+      setPosts(postsArray); // Set posts in state
     });
+  
+    return () => unsubscribe(); // Cleanup subscription on unmount
+  }, []);
+
+  const uploadImage = (file: File, userId: string, postId: string): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const storage = getStorage();
+      const storageRef = ref(storage, `posts/${userId}/${postId}/${file.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        },
+        (error) => {
+          console.error("Upload failed", error);
+          reject(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            resolve(downloadURL);
+          });
+        }
+      );
+    });
+  };
+
+  const onDrop = (acceptedFiles: File[]) => {
+    const filePreviewData: FileWithPreview[] = acceptedFiles.map(file => ({
+      file: file,
+      preview: URL.createObjectURL(file),  // Adds the 'preview' property
+    }));
+
+    setFilePreviews(filePreviewData);
   };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    accept: 'image/*' as any, // Using 'any' to bypass the type checking
+    accept: {
+      'image/jpeg': ['.jpeg'],
+      'image/jpg': ['.jpg'],
+      'image/png': ['.png'],
+    }
   });
 
-  // Clean up the previews URLs to avoid memory leaks
-  useEffect(() => {
-    return () => filePreviews.forEach(file => URL.revokeObjectURL(file.preview));
-  }, [filePreviews]);
-
-  const [user] = useAuthState(auth); // Get the current user
-  const [postText, setPostText] = useState(''); // State for the post text
-
   const handlePost = async () => {
-    if (!postText.trim()) return; // Simple validation
-  
-    const hashtags = postText.match(/#\w+/g) || []; // Extract hashtags from postText
-    // Check if user is null or undefined before proceeding
-    if (!user) {
-      console.error("User is not logged in.");
-      return; // Exit the function if there is no user logged in
-    }
-    const mediaContentUrl = filePreviews[0]?.mediaContent || 'DEFAULT_IMAGE_URL_OR_EMPTY_STRING';
-  
+    if (!postText.trim() || !user) return;
+
     try {
-     
-      // The original line for adding a document to Firestore, capturing the reference
-      const docRef = await addDoc(collection(db, 'posts'), {
+      // First, add an entry to Firestore to get the postId
+      const newPostRef = collection(db, 'posts');
+      const docRef = await addDoc(newPostRef, {
         userId: user.uid,
         description: postText,
-        mediaContent: mediaContentUrl, 
-        hashtags,
-        timestamp: new Date(), // Store the time the post was made
+        mediaContent: '', // Placeholder for URL
+        hashtags: postText.match(/#\w+/g) || [],
+        timestamp: new Date(),
       });
-  
-      // Assuming you want to immediately reflect this post in your UI:
-      const newPost = {
+
+      // Upload the image and update the post with the image URL
+      const imageFile = filePreviews[0].file; // Directly accessing the File object
+      let imageUrl = 'DEFAULT_IMAGE_URL_OR_EMPTY_STRING';
+      if (imageFile) {
+        imageUrl = await uploadImage(imageFile, user.uid, docRef.id);
+        await updateDoc(docRef, { mediaContent: imageUrl }); // Update the document with the image URL
+      }
+
+      // Update local state and UI after successful post creation
+      setPosts([...posts, {
         id: docRef.id,
-        userName: user.displayName || 'Anonymous', // Adjust 
-        userProfilePic: '', // Adjust
-        mediaContent: mediaContentUrl, // Adjust 
+        userName: user.displayName || 'Anonymous',
+        userProfilePic: '',
+        mediaContent: imageUrl,
         description: postText,
-      };
-  
-      // Update the local state to include the new post
-      setPosts(currentPosts => [...currentPosts, newPost]);
-  
+      }]);
+
       setPostText(''); // Clear the input after posting
-      // Reset other states as necessary, e.g., clear selected images
+      setFilePreviews([]); // Clear the file previews after posting
     } catch (error) {
-      console.error("Error adding document: ", error);
+      console.error("Error adding document or uploading image: ", error);
     }
   };
 
@@ -138,12 +140,12 @@ const Feed = () => {
           ))}
         </div>
         <input
-        type="text"
-        placeholder="Write a post"
-        className={styles.postInput}
-        value={postText}
-        onChange={(e) => setPostText(e.target.value)}
-         />
+          type="text"
+          placeholder="Write a post"
+          className={styles.postInput}
+          value={postText}
+          onChange={(e) => setPostText(e.target.value)}
+        />
         <div {...getRootProps()} className={styles.dropzone}>
           <input {...getInputProps()} />
           {
@@ -160,7 +162,7 @@ const Feed = () => {
         <div key={post.id} className={styles.postItem}>
           <div className={styles.postHeader}>
             <img src={post.userProfilePic} alt="User" className={styles.profilePic} />
-            <div className={styles.userName}>{post.userName}</div>
+            <div className={styles.userName}> {post.userName}</div>
           </div>
           <div className={styles.postDescription}>{post.description}</div>
           <img src={post.mediaContent} alt="Post Content" className={styles.postImage} />
