@@ -6,16 +6,7 @@ import Link from 'next/link';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { db, auth } from '../firebase/firebaseConfig';
-
-interface UserData {
-  uid?: string;
-  firstName?: string;
-  lastName?: string;
-  profilePictureUrl?: string;
-  connections?: number; // Assuming 'connections' is a number
-  bio?: string;
-  location?: string;
-}
+import { UserData } from '../types/UserData'
 
 export default function UserProfile() {
   const [user] = useAuthState(auth);
@@ -45,7 +36,7 @@ export default function UserProfile() {
       {/* Conditionally render data if userData is not null */}
       {userData && (
         <>
-          <img src={userData.profilePictureUrl || 'https://placehold.co/100x100'} alt="User Profile" className={styles.profilePic} />
+          <img src={userData.profilePictureUrl} alt="User Profile" className={styles.profilePic} />
           <button className={styles.userButton}>
             <h2 className={styles.userName}>
             {user && (
@@ -55,8 +46,6 @@ export default function UserProfile() {
             )}
             </h2>
           </button>
-          <p className={styles.userBio}>{userData.bio}</p>
-          <p className={styles.userLocation}>{userData.location}</p>
           <div className={styles.userStats}>
             <button className={styles.userButton}>
               <Link href={connectionsLink}>
