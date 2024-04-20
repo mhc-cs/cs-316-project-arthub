@@ -60,6 +60,7 @@ const FirstScreen = () => {
   };
 
   return (
+    <div style={{ backgroundColor: "#FDFD96", height: "100vh" }}>
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content text-center">
         <div className="max-w-md">
@@ -69,6 +70,7 @@ const FirstScreen = () => {
           <button onClick={() => signInWithGoogle(false)} style={{ marginLeft: '10px' }} className="btn btn-outline btn-warning"> LOGIN WITH GOOGLE</button>
         </div>
       </div>
+    </div>
     </div>
   );
 };
