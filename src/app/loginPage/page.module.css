@@ -1,0 +1,53 @@
+/* FormStyles.module.css */
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.formLabel {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: black; /* Text color for buttons */
+}
+
+.formInput,
+.formSelect,
+.formTextarea {
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    color: #000; /* Text color for input text */
+    background-color: #fff; 
+}
+
+.formTextarea {
+    height: 100px;
+    resize: vertical; /* Allows vertical resize only */
+}
+
+.formButton {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.formButton:hover {
+    background-color: #0056b3;
+}

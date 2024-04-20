@@ -1,9 +1,9 @@
 "use client"
 import { useState } from "react";
 
-import AuthPage from "../AuthPage/MainAuthPage";
+import AuthPage from "../loginPage/MainLoginPage";
 import ChatPage from "./ChatsPage";
-import Loading from "../AuthPage/Loading";
+import Loading from "../loginPage/Loading";
 import { auth } from "@/firebase/firebaseConfig";
 import { User } from "firebase/auth";
 
