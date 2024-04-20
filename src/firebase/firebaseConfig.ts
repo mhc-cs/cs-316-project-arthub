@@ -3,7 +3,7 @@ import { initializeApp, getApps } from "firebase/app"; // TODO: getapp
 import { getAuth } from "firebase/auth";
 // TODO: 2 line 
 import { getFirestore } from "firebase/firestore";
-import { getDatabase } from "firebase/database";
+import { useAuthState } from "react-firebase-hooks/auth"; // Import the missing useAuthState function
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -28,6 +28,14 @@ if (!getApps().length) {
   app = getApps()[0]; // if already initialized, use that one
 }
 
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-export const rtdb = getDatabase(app);
+const auth = getAuth(app);
+// Move the code using the useAuthState hook inside a React function component
+
+function GetUser() {
+  const user = useAuthState(auth);
+  // Rest of the code...
+}
+
+const firestore = getFirestore(app);
+
+export { auth, app, firestore, GetUser };
