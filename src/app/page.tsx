@@ -60,18 +60,18 @@ const FirstScreen = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#FDFD96", height: "100vh" }}>
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content text-center">
-        <div className="max-w-md">
-          <h1 className="text-5xl font-bold">Hello There ✨</h1>
-          <p className="py-6">Create Collaborate Connect</p>
-          <button onClick={() => signInWithGoogle(true)} className="btn btn-outline btn-warning"> SIGN UP WITH GOOGLE</button>
-          <button onClick={() => signInWithGoogle(false)} style={{ marginLeft: '10px' }} className="btn btn-outline btn-warning"> LOGIN WITH GOOGLE</button>
-        </div>
+
+  <div className="hero min-h-screen bg-base-200">
+    <div className="hero-content flex-col lg:flex-row">
+      <img src="logo.jpg" className="max-w-sm rounded-lg shadow-2xl" />
+      <div>
+        <h1 className="text-5xl font-bold " >Hi Artist ✨ !</h1>
+        <p className="py-6" >Create Collaborate Connect</p>
+        <button onClick={() => signInWithGoogle(true)} className="btn btn-outline btn-warning"> SIGN UP WITH GOOGLE</button>
+        <button onClick={() => signInWithGoogle(false)} style={{ marginLeft: '10px' }} className="btn btn-outline btn-warning"> LOGIN WITH GOOGLE</button>
       </div>
     </div>
-    </div>
+  </div>
   );
 };
 
