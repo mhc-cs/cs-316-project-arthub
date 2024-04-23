@@ -1,0 +1,32 @@
+.container {
+  /* Define a linear gradient with color stops for each of your colors */
+  background-image: linear-gradient(
+    to right,
+    #30D5C8 0%, #30D5C8 5%,  /* Turquoise */
+    #FDFD96 5%, #FDFD96 10%,  /* Pastel Yellow */
+    #FF800D 10%, #FF800D 15%, /* Orange */
+    #B9FF66 15%, #B9FF66 20%, /* Lime Green */
+    #045C5A 20%, #045C5A 25%, /* Dark Teal */
+    #30D5C8 25%, #30D5C8 30%, /* Turquoise */
+    #FDFD96 30%, #FDFD96 35%, /* Pastel Yellow */
+    #FF800D 35%, #FF800D 40%, /* Orange */
+    #B9FF66 40%, #B9FF66 45%, /* Lime Green */
+    #045C5A 45%, #045C5A 50%, /* Dark Teal */
+    #30D5C8 50%, #30D5C8 55%, /* Turquoise */
+    #FDFD96 55%, #FDFD96 60%, /* Pastel Yellow */
+    #FF800D 60%, #FF800D 65%, /* Orange */
+    #B9FF66 65%, #B9FF66 70%, /* Lime Green */
+    #045C5A 70%, #045C5A 75%, /* Dark Teal */
+    #30D5C8 75%, #30D5C8 80%, /* Turquoise */
+    #FDFD96 80%, #FDFD96 85%, /* Pastel Yellow */
+    #FF800D 85%, #FF800D 90%, /* Orange */
+    #B9FF66 90%, #B9FF66 95%, /* Lime Green */
+    #045C5A 95%, #045C5A 100% /* Dark Teal */
+  );
+  display: flex;
+  justify-content: center; /* Centers horizontally in the flex container */
+  align-items: center; /* Centers vertically in the flex container */
+  height: 100vh; /* Full height of the viewport */
+  width: 100%; /* Full width of the container */
+  background-color: #045C5A; /* Background color */
+}

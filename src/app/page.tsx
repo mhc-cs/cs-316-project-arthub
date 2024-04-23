@@ -3,6 +3,8 @@
 import React, { useEffect } from 'react';
 import styles from './page.module.css';
 
+//import GragientBG from './design/GradientBG'
+
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 
@@ -66,14 +68,22 @@ const FirstScreen = () => {
   return (
 
     <div className={styles.container}>
+
+    <div className={styles.loginContainer}>
+    <div className="box"></div>
+      <img src="https://i.pinimg.com/originals/b8/c5/b1/b8c5b1b6c6fa24e202ea0e8fe7ed988d.png" alt="Decorative icon" className={styles.icon}/>
       <button onClick={() => signInWithGoogle(true)} className={styles.topBarButton}>
-        Sign Up with Google
+        SIGN UP WITH GOOGLE
       </button>
       <button onClick={() => signInWithGoogle(false)} className={styles.topBarButton}>
-        Log In with Google
+        LOGIN WITH GOOGLE
       </button>
-      </div>
+    </div>
+
+  </div>
+
   
+
   );
 };
 
