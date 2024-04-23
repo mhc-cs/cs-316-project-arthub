@@ -1,136 +1,269 @@
 .feedContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-    background-color: #f5f5f5;
-    max-width: 600px; /* Fixed max-width */
-    margin-left: auto; /* Centering the container */
-    margin-right: auto; /* Centering the container */
-    margin-top: 5%;
-    border-radius: 8px;
-    overflow-y: auto; /* Makes the container scrollable */
-  }
-  
-  .postItem {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .postHeader {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-  }
-  
-  .profilePic {
-    width: 50px; /* Adjust size as needed */
-    height: 50px; /* Adjust size as needed */
-    border-radius: 50%; /* Makes the image circular */
-    object-fit: cover;
-    margin-right: 10px;
-  }
-  
-  .userName {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  .postImage {
-    width: 100%;
-    max-width: 600px;
-    /* Cover the area of the container without distorting the image */
-    object-fit: contain;
-  }
-  
-  .postDescription {
-    padding: 15px;
-    text-align: left;
-  }
-  
-  .postingSection {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    background-color: #fff;
-    margin-top: 20px;
-  }
-  
-  .postInput {
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    outline: none;
-  }
-  
-  .previewContainer {
-    display: flex;
-    gap: 10px; 
-    margin-right: auto; /* Push other elements to the right */
-  }
-  .previewImage {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 10px; 
-  }
-  
-  .addButton, .postButton {
-    padding: 10px 20px; 
-    border: none;
-    background-color: #C0A0C8; 
-    color: white;
-    border-radius: 20px;
-    cursor: pointer; 
-  }
-  .addButton:hover, .postButton:hover {
-    background-color: #A885A8; 
-  }
-  .dropzone {
-    display: flex; 
-    align-items: center;
-  }
-  
-  .dropzoneText {
-    margin-right: 10px; 
-  }
-  
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  max-width: 600px;
+  /* Fixed max-width */
+  margin-left: auto;
+  /* Centering the container */
+  margin-right: auto;
+  /* Centering the container */
+  margin-top: 5%;
+  border-radius: 8px;
+  overflow-y: auto;
+  /* Makes the container scrollable */
+}
+
+.postItem {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.postHeader {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.profilePic {
+  width: 50px;
+  /* Adjust size as needed */
+  height: 50px;
+  /* Adjust size as needed */
+  border-radius: 50%;
+  /* Makes the image circular */
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.userName {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.postImage {
+  width: 100%;
+  max-width: 600px;
+  /* Cover the area of the container without distorting the image */
+  object-fit: contain;
+}
+
+.postDescription {
+  padding: 15px;
+  text-align: left;
+}
+
+.postingSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: #fff;
+  margin-top: 20px;
+}
+
+.postInput {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+
+.previewContainer {
+  display: flex;
+  gap: 10px;
+  margin-right: auto;
+  /* Push other elements to the right */
+}
+
+.previewImage {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.addButton,
+.postButton {
+  padding: 10px 20px;
+  border: none;
+  background-color: #C0A0C8;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.addButton:hover,
+.postButton:hover {
+  background-color: #A885A8;
+}
+
+.dropzone {
+  display: flex;
+  align-items: center;
+}
+
+.dropzoneText {
+  margin-right: 10px;
+}
+
+/* Likes */
+.likeButton {
+  padding: 5px 10px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.icon {
+  color: #f00;
+}
+
+/* Comments */
+.commentsContainer {
+  margin-top: 10px;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.comment {
+  display: flex;
+  align-items: flex-start;
+  /* Align items to the top */
+  margin-bottom: 10px;
+}
+
+.commentProfilePic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.commentContent {
+  flex-grow: 1;
+}
+
+.commentUser {
+  font-weight: bold;
+}
+
+.commentForm {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.commentInput {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+
+.commentButton {
+  padding: 8px 16px;
+  border: none;
+  background-color: #C0A0C8;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.commentButton:hover {
+  background-color: #A885A8;
+}
+
+.commentText {
+  margin-left: 10px;
+}
+
 /* Enforcing light theme styles under dark theme preference */
 @media (prefers-color-scheme: dark) {
-  .feedContainer, .postItem, .postHeader, .profilePic, .userName, .postImage, .postDescription, .postingSection, .postInput {
-    background-color: #f5f5f5; 
-    color: #000; 
-    
+
+  .feedContainer,
+  .postItem,
+  .postHeader,
+  .profilePic,
+  .userName,
+  .postImage,
+  .postDescription,
+  .postingSection,
+  .postInput {
+    background-color: #f5f5f5;
+    color: #000;
+
   }
-  .feedContainer{
-  border: 1px solid #ddd; 
+
+  .feedContainer {
+    border: 1px solid #ddd;
   }
+
   .profilePic {
     border: 1px solid #ccc;
   }
 
   .postInput {
     background-color: #fff;
-    color: #000; 
-    border: 1px solid #ccc; 
+    color: #000;
+    border: 1px solid #ccc;
   }
-  
+
   .postingSection {
     border: 1px solid #ccc;
     background-color: #fff;
   }
-  
-  .addButton, .postButton {
+
+  .addButton,
+  .postButton {
     border: none;
-    background-color: #C0A0C8; 
+    background-color: #C0A0C8;
     color: white;
   }
-  .addButton:hover, .postButton:hover {
-    background-color: #A885A8; 
+
+  .addButton:hover,
+  .postButton:hover {
+    background-color: #A885A8;
   }
-  
+
+  /* Likes */
+  .likeButton {
+    background-color: transparent;
+  }
+
+  .icon {
+    color: #f00;
+  }
+
+  /* Comments */
+  .commentsContainer {
+    border-top: 1px solid #ddd;
+  }
+
+  .commentForm {
+    border-top: 1px solid #ddd;
+  }
+
+  .commentInput {
+    border: 1px solid #ccc;
+  }
+
+  .commentButton {
+    background-color: #C0A0C8;
+    color: white;
+  }
+
+  .commentButton:hover {
+    background-color: #A885A8;
+  }
+
 }
