@@ -81,8 +81,6 @@ const FirstScreen = () => {
     </div>
 
   </div>
-
-
   );
 };
 
