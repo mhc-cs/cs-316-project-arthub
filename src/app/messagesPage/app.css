@@ -1,0 +1,35 @@
+.ce-my-message-body.ce-my-message-sending-body {
+  background-color: #ff6f70 !important;
+  color: white !important;
+}
+.ce-custom-message-input {
+  border: 1px solid #ff6f70 !important;
+}
+
+.ce-custom-send-button {
+  background-color: #ff6f70 !important;
+  border: 1px solid #ff6f70 !important;
+}
+.ce-chat-feed {
+  background-color: #e5e7eb !important;
+}
+
+.ce-chat-list {
+  background-color: white !important;
+}
+
+.ce-chat-button {
+}
+
+.ce-message-list {
+  background: linear-gradient(
+    0deg,
+    rgba(62, 64, 75, 1) 0% !important,
+    #e5e7eb 75% !important,
+    white 100% !important
+  );
+}
+
+.ce-my-message-timestamp {
+  color: #ff6f70 !important;
+}

@@ -1,7 +1,16 @@
-import { initializeApp } from "firebase/app";
+
+// Import the functions you need from the SDKs you need
+import { initializeApp, getApps } from "firebase/app"; // TODO: getapp
+import { getAuth } from "firebase/auth";
+// TODO: 2 line 
 import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth"; 
+import { useAuthState } from "react-firebase-hooks/auth"; // Import the missing useAuthState function
+
+
+
+
 import { getStorage } from "firebase/storage"; 
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCEryBC4VbxiZ2TNaEa0EVfzp9a-BoHKXI",
@@ -11,6 +20,7 @@ const firebaseConfig = {
   messagingSenderId: "51859385118",
   appId: "1:51859385118:web:caae9a3ddb599ea7ec370f"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -24,4 +34,27 @@ const storage = getStorage(app);
 // Export both Firestore, Authentication, and Storage
 export { db, auth }; 
 
-export default firebaseConfig;
+
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// export const auth = getAuth(app);
+
+//TODO: this paragraph 
+let app;
+if (!getApps().length) {
+  app = initializeApp(firebaseConfig);
+} else {
+  app = getApps()[0]; // if already initialized, use that one
+}
+
+const auth = getAuth(app);
+// Move the code using the useAuthState hook inside a React function component
+
+function GetUser() {
+  const user = useAuthState(auth);
+  // Rest of the code...
+}
+
+const firestore = getFirestore(app);
+
+export { auth, app, firestore, GetUser, firebaseConfig};

@@ -9,6 +9,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Link from 'next/link';
 
 export default function homePage() {
+
   return (
     <div className={styles.container}>
     
