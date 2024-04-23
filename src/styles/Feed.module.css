@@ -74,34 +74,40 @@
 
 .previewContainer {
   display: flex;
-  gap: 10px; 
-  margin-right: auto; /* Push other elements to the right */
+  gap: 10px;
+  margin-right: auto;
+  /* Push other elements to the right */
 }
+
 .previewImage {
   width: 50px;
   height: 50px;
   object-fit: cover;
-  border-radius: 10px; 
+  border-radius: 10px;
 }
 
-.addButton, .postButton {
-  padding: 10px 20px; 
+.addButton,
+.postButton {
+  padding: 10px 20px;
   border: none;
-  background-color: #C0A0C8; 
+  background-color: #C0A0C8;
   color: white;
   border-radius: 20px;
-  cursor: pointer; 
+  cursor: pointer;
 }
-.addButton:hover, .postButton:hover {
-  background-color: #A885A8; 
+
+.addButton:hover,
+.postButton:hover {
+  background-color: #A885A8;
 }
+
 .dropzone {
-  display: flex; 
+  display: flex;
   align-items: center;
 }
 
 .dropzoneText {
-  margin-right: 10px; 
+  margin-right: 10px;
 }
 
 /* Likes */
@@ -125,15 +131,18 @@
 
 .comment {
   display: flex;
-  align-items: flex-start; /* Align items to the top */
+  align-items: flex-start;
+  /* Align items to the top */
   margin-bottom: 10px;
 }
+
 .commentProfilePic {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   margin-right: 10px;
 }
+
 .commentContent {
   flex-grow: 1;
 }
@@ -141,12 +150,14 @@
 .commentUser {
   font-weight: bold;
 }
+
 .commentForm {
   display: flex;
   align-items: center;
   padding: 10px;
   border-top: 1px solid #ddd;
 }
+
 .commentInput {
   flex-grow: 1;
   padding: 8px;
@@ -154,6 +165,7 @@
   border-radius: 20px;
   outline: none;
 }
+
 .commentButton {
   padding: 8px 16px;
   border: none;
@@ -163,6 +175,7 @@
   cursor: pointer;
   margin-left: 10px;
 }
+
 .commentButton:hover {
   background-color: #A885A8;
 }
@@ -198,15 +211,52 @@
   }
 
   .postInput {
-    background-color: #fff; /* White background for input field */
-    color: #000; /* Dark text for input */
+    background-color: #fff;
+    /* White background for input field */
+    color: #000;
+    /* Dark text for input */
     border: 1px solid #ccc;
   }
-  .addButton, .postButton {
-    background-color: #C0A0C8; 
+
+  .addButton,
+  .postButton {
+    background-color: #C0A0C8;
     color: white;
   }
-  .addButton:hover, .postButton:hover {
-    background-color: #A885A8; 
+
+  .addButton:hover,
+  .postButton:hover {
+    background-color: #A885A8;
+  }
+
+  /* Likes */
+  .likeButton {
+    background-color: transparent;
+  }
+
+  .icon {
+    color: #f00;
+  }
+
+  /* Comments */
+  .commentsContainer {
+    border-top: 1px solid #ddd;
+  }
+
+  .commentForm {
+    border-top: 1px solid #ddd;
+  }
+
+  .commentInput {
+    border: 1px solid #ccc;
+  }
+
+  .commentButton {
+    background-color: #C0A0C8;
+    color: white;
+  }
+
+  .commentButton:hover {
+    background-color: #A885A8;
   }
 }

@@ -9,7 +9,6 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import { query, onSnapshot } from "firebase/firestore";
 import { getDoc, arrayRemove, arrayUnion } from 'firebase/firestore';
 
-
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import styles from '../styles/Feed.module.css';
 
@@ -20,14 +19,13 @@ type Post = {
   mediaContent: string;
   description: string;
   likes?: string[]; // Array of user IDs who liked the post
-  comments?: { userId: string; comment: string; timestamp: string }[]; // Array of comments
+  comments?: { userId: string; userName: string; comment: string; timestamp: string }[]; // Array of comments
 };
 type FileWithPreview = {
   file: File; // Explicit File object
   preview: string; // URL for previewing the image
   mediaContent?: string; // URL from storage
 };
-
 
 const Feed = () => {
 
@@ -38,6 +36,7 @@ const Feed = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
+
     const q = query(collection(db, "posts")); // Define a query against the collection.
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const postsArray = querySnapshot.docs.map(doc => {
@@ -105,10 +104,22 @@ const Feed = () => {
     if (!postText.trim() || !user) return;
 
     try {
-      // First, add an entry to Firestore to get the postId
+      // Fetch user data to get profile picture URL
+      const userDocRef = doc(db, 'users', user.uid);
+      const userDocSnap = await getDoc(userDocRef);
+      if (!userDocSnap.exists()) {
+        console.error("No user data available");
+        return;
+      }
+      const userData = userDocSnap.data();
+      const userProfilePic = userData.profilePictureUrl || 'DEFAULT_IMAGE_URL'; // Fallback to a default image if none is found
+      const userName = `${userData.firstName} ${userData.lastName}`; // Construct full name
+      // Add an entry to Firestore to get the postId
       const newPostRef = collection(db, 'posts');
       const docRef = await addDoc(newPostRef, {
         userId: user.uid,
+        userName: userName,
+        userProfilePic: userProfilePic,
         description: postText,
         mediaContent: '', // Placeholder for URL
         hashtags: postText.match(/#\w+/g) || [],
@@ -128,7 +139,7 @@ const Feed = () => {
       // Update local state and UI after successful post creation
       setPosts([...posts, {
         id: docRef.id,
-        userName: user.displayName || 'Anonymous',
+        userName: userName,
         userProfilePic: '',
         mediaContent: imageUrl,
         description: postText,
@@ -163,22 +174,31 @@ const Feed = () => {
   };
   const addComment = async (postId: string, commentText: string) => {
     if (!user || !commentText.trim()) return;
-    const postRef = doc(db, "posts", postId);
+    try {
+      // Directly fetch user data before adding the comment
+      const userDocRef = doc(db, 'users', user.uid);
+      const userDocSnap = await getDoc(userDocRef);
 
-    const newComment = {
-      userId: user.uid,
-      //userProfilePic: user.photoURL,
-      comment: commentText,
-      timestamp: new Date().toISOString() // Use server timestamps if preferred
-    };
+      if (!userDocSnap.exists()) {
+        console.error("No user data available");
+        return;
+      }
 
-    // Push the new comment into the comments array
-    await updateDoc(postRef, {
-      comments: arrayUnion(newComment)
-    });
+      const userData = userDocSnap.data();
+      const newComment = {
+        userName: `${userData.firstName} ${userData.lastName}`,
+        comment: commentText,
+        timestamp: new Date().toISOString()
+      };
+
+      const postRef = doc(db, "posts", postId);
+      await updateDoc(postRef, {
+        comments: arrayUnion(newComment)
+      });
+    } catch (error) {
+      console.error("Failed to add comment:", error);
+    }
   };
-
-
 
   return (
 
@@ -216,34 +236,33 @@ const Feed = () => {
           </div>
           <div className={styles.postDescription}>{post.description}</div>
           <img src={post.mediaContent} alt="Post Content" className={styles.postImage} />
-          
+
           <div className={styles.interactions}>
-          <button className={styles.likeButton} onClick={() => toggleLike(post.id)}>
-            <i className={`fa-solid fa-heart ${styles.icon}`}></i> Like ({post.likes?.length || 0})
-          </button>
-          
+            <button className={styles.likeButton} onClick={() => toggleLike(post.id)}>
+              <i className={`fa-solid fa-heart ${styles.icon}`}></i> Like ({post.likes?.length || 0})
+            </button>
 
-          <div className={styles.commentsContainer}>
-          {post.comments?.map((comment, index) => (
-            <div key={index} className={styles.comment}>
-              
-              <div className={styles.commentContent}>
-                <span className={styles.commentUser}>{comment.userId}:</span>
-                <span className={styles.commentText}>{comment.comment}</span>
-              </div>
+            <div className={styles.commentsContainer}>
+
+              {post.comments?.map((comment, index) => (
+                <div key={index} className={styles.comment}>
+                  <div className={styles.commentContent}>
+                    <span className={styles.commentUser}>{comment.userName}:</span>
+                    <span className={styles.commentText}>{comment.comment}</span>
+                  </div>
+                </div>
+              ))}
+
+              <form onSubmit={(e) => {
+                e.preventDefault();
+                addComment(post.id, commentText);
+                setCommentText('');
+              }} className={styles.commentForm}>
+
+                <input type="text" placeholder="Add a comment..." value={commentText} onChange={e => setCommentText(e.target.value)} className={styles.commentInput} />
+                <button type="submit" className={styles.commentButton}>Post</button>
+              </form>
             </div>
-          ))} 
-
-          <form onSubmit={(e) => {
-            e.preventDefault();
-            addComment(post.id, commentText); 
-            setCommentText(''); // Clear comment text after submission
-          }} className={styles.commentForm}>
-            
-            <input type="text" placeholder="Add a comment..." value={commentText} onChange={e => setCommentText(e.target.value)} className={styles.commentInput} />
-            <button type="submit" className={styles.commentButton}>Post</button>
-          </form>
-          </div>  
           </div>
         </div>
       ))}
