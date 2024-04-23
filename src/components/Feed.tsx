@@ -1,15 +1,16 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { FileWithPath, useDropzone } from 'react-dropzone';
-import { collection, addDoc, updateDoc } from 'firebase/firestore';
+import { useDropzone } from 'react-dropzone';
+import { collection, addDoc, updateDoc, doc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { db, auth } from '../firebase/firebaseConfig';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { query, onSnapshot } from "firebase/firestore";
+import { getDoc, arrayRemove, arrayUnion } from 'firebase/firestore';
 
 
-
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import styles from '../styles/Feed.module.css';
 
 type Post = {
@@ -18,6 +19,8 @@ type Post = {
   userProfilePic: string;
   mediaContent: string;
   description: string;
+  likes?: string[]; // Array of user IDs who liked the post
+  comments?: { userId: string; comment: string; timestamp: string }[]; // Array of comments
 };
 type FileWithPreview = {
   file: File; // Explicit File object
@@ -31,22 +34,28 @@ const Feed = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [filePreviews, setFilePreviews] = useState<FileWithPreview[]>([]);
   const [postText, setPostText] = useState('');
+  const [commentText, setCommentText] = useState('');
   const [user] = useAuthState(auth);
 
   useEffect(() => {
     const q = query(collection(db, "posts")); // Define a query against the collection.
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const postsArray = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        userName: doc.data().userName,
-        userProfilePic: doc.data().userProfilePic,
-        mediaContent: doc.data().mediaContent,
-        description: doc.data().description,
-        timestamp: doc.data().timestamp?.toDate().toString() // Handle date conversion if necessary
-      }));
+      const postsArray = querySnapshot.docs.map(doc => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          userName: doc.data().userName,
+          userProfilePic: doc.data().userProfilePic,
+          mediaContent: doc.data().mediaContent,
+          description: doc.data().description,
+          timestamp: doc.data().timestamp?.toDate().toString(),
+          likes: data.likes || [],
+          comments: data.comments || [],
+        }
+      });
       setPosts(postsArray); // Set posts in state
     });
-  
+
     return () => unsubscribe(); // Cleanup subscription on unmount
   }, []);
 
@@ -104,6 +113,8 @@ const Feed = () => {
         mediaContent: '', // Placeholder for URL
         hashtags: postText.match(/#\w+/g) || [],
         timestamp: new Date(),
+        likes: [],
+        comments: []
       });
 
       // Upload the image and update the post with the image URL
@@ -129,6 +140,45 @@ const Feed = () => {
       console.error("Error adding document or uploading image: ", error);
     }
   };
+
+  const toggleLike = async (postId: string) => {
+    if (!user) return;
+    const postRef = doc(db, "posts", postId);
+    const postSnap = await getDoc(postRef);
+
+    if (postSnap.exists()) {
+      const likes = postSnap.data().likes || [];
+      if (likes.includes(user.uid)) {
+        // User already liked this post, so remove their like
+        await updateDoc(postRef, {
+          likes: arrayRemove(user.uid)
+        });
+      } else {
+        // Add a new like from this user
+        await updateDoc(postRef, {
+          likes: arrayUnion(user.uid)
+        });
+      }
+    }
+  };
+  const addComment = async (postId: string, commentText: string) => {
+    if (!user || !commentText.trim()) return;
+    const postRef = doc(db, "posts", postId);
+
+    const newComment = {
+      userId: user.uid,
+      //userProfilePic: user.photoURL,
+      comment: commentText,
+      timestamp: new Date().toISOString() // Use server timestamps if preferred
+    };
+
+    // Push the new comment into the comments array
+    await updateDoc(postRef, {
+      comments: arrayUnion(newComment)
+    });
+  };
+
+
 
   return (
 
@@ -166,10 +216,38 @@ const Feed = () => {
           </div>
           <div className={styles.postDescription}>{post.description}</div>
           <img src={post.mediaContent} alt="Post Content" className={styles.postImage} />
+          
+          <div className={styles.interactions}>
+          <button className={styles.likeButton} onClick={() => toggleLike(post.id)}>
+            <i className={`fa-solid fa-heart ${styles.icon}`}></i> Like ({post.likes?.length || 0})
+          </button>
+          
+
+          <div className={styles.commentsContainer}>
+          {post.comments?.map((comment, index) => (
+            <div key={index} className={styles.comment}>
+              
+              <div className={styles.commentContent}>
+                <span className={styles.commentUser}>{comment.userId}:</span>
+                <span className={styles.commentText}>{comment.comment}</span>
+              </div>
+            </div>
+          ))} 
+
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            addComment(post.id, commentText); 
+            setCommentText(''); // Clear comment text after submission
+          }} className={styles.commentForm}>
+            
+            <input type="text" placeholder="Add a comment..." value={commentText} onChange={e => setCommentText(e.target.value)} className={styles.commentInput} />
+            <button type="submit" className={styles.commentButton}>Post</button>
+          </form>
+          </div>  
+          </div>
         </div>
-      ))
-      }
-    </div >
+      ))}
+    </div>
   );
 };
 

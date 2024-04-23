@@ -104,6 +104,74 @@
   margin-right: 10px; 
 }
 
+/* Likes */
+.likeButton {
+  padding: 5px 10px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.icon {
+  color: #f00;
+}
+
+/* Comments */
+.commentsContainer {
+  margin-top: 10px;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.comment {
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  margin-bottom: 10px;
+}
+.commentProfilePic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.commentContent {
+  flex-grow: 1;
+}
+
+.commentUser {
+  font-weight: bold;
+}
+.commentForm {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+.commentInput {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+.commentButton {
+  padding: 8px 16px;
+  border: none;
+  background-color: #C0A0C8;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.commentButton:hover {
+  background-color: #A885A8;
+}
+
+.commentText {
+  margin-left: 10px;
+}
+
+
 
 /* Enforcing light theme styles under dark theme preference */
 @media (prefers-color-scheme: dark) {
