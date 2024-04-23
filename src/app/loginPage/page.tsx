@@ -4,7 +4,9 @@ import styles from './page.module.css';
 import { getAuth } from 'firebase/auth';
 import { doc, setDoc, getDoc, updateDoc, getFirestore } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
+
 import {firebaseConfig} from '../../firebase/firebaseConfig'; 
+
 import { UserData } from '../../types/UserData'  
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -159,4 +161,6 @@ const LoginPage: React.FC = () => {
   );
 };
 
+
 export default LoginPage;
+

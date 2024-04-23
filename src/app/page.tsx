@@ -5,10 +5,14 @@ import styles from './page.module.css';
 
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
-import {auth, app } from '../firebase/firebaseConfig';
+
+import firebaseConfig from '../firebase/firebaseConfig';
 import { doc, setDoc, getDoc, getFirestore } from 'firebase/firestore';
 
 // Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
 const db = getFirestore();
 
 const FirstScreen = () => {
@@ -61,15 +65,14 @@ const FirstScreen = () => {
 
   return (
 
-  <div className="hero min-h-screen bg-base-200">
-    <div className="hero-content flex-col lg:flex-row">
-      <img src="logo.jpg" className="max-w-sm rounded-lg shadow-2xl" />
-      <div>
-        <h1 className="text-5xl font-bold " >Hi Artist ✨ !</h1>
-        <p className="py-6" >Create Collaborate Connect</p>
-        <button onClick={() => signInWithGoogle(true)} className="btn btn-outline btn-warning"> SIGN UP WITH GOOGLE</button>
-        <button onClick={() => signInWithGoogle(false)} style={{ marginLeft: '10px' }} className="btn btn-outline btn-warning"> LOGIN WITH GOOGLE</button>
-      </div>
+    <div className={styles.container}>
+      <button onClick={() => signInWithGoogle(true)} className={styles.topBarButton}>
+        Sign Up with Google
+      </button>
+      <button onClick={() => signInWithGoogle(false)} className={styles.topBarButton}>
+        Log In with Google
+      </button>
+
     </div>
   </div>
   );

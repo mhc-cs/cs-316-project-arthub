@@ -1,0 +1,21 @@
+.notificationItem {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: #f9f9f9;
+    transition: background-color 0.2s;
+}
+
+.notificationItem:hover {
+    background-color: #f0f0f0;
+}
+
+.message {
+    font-size: 16px;
+    color: #333;
+}
+
+.timestamp {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}

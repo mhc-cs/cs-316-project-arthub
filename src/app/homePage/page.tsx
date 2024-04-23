@@ -9,40 +9,47 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Link from 'next/link';
 
 export default function homePage() {
-    return (
-        <div className={styles.container}>
 
-            <div className={styles.topBar}>
-                <div className={styles.searchBarContainer}>
-                    <SearchBar />
-                </div>
-                <button className={styles.topBarButton}>
-                    <i className={`fas fa-user-friends ${styles.icon}`}></i> My Network
-                </button>
+  return (
+    <div className={styles.container}>
+    
+      <div className={styles.topBar}>
+      <div className={styles.searchBarContainer}>
+        <SearchBar />
+      </div>
 
-                <Link href="/messagesPage">
-                    <button className={styles.topBarButton}>
-                        <i className={`fa-solid fa-message ${styles.icon}`}></i> Messages
-                    </button>
-                </Link>
+      <Link href="/networkPage">
+        <button className={styles.topBarButton}>
+          <i className={`fas fa-user-friends ${styles.icon}`}></i> My Network
+        </button>
+      </Link>
 
-                <button className={styles.topBarButton}>
-                    <i className={`fa-solid fa-bell ${styles.icon}`}></i> Notifications
-                </button>
-            </div>
+        <Link href="/messagesPage">
+        <button className={styles.topBarButton}>
+          <i className={`fa-solid fa-message ${styles.icon}`}></i> Messages
+        </button>
+        </Link>
 
-            <div className={styles.layoutContainer}>
-                <aside className={styles.sidebar}>
-                    <UserProfile />
-                </aside>
-                <div className={styles.mainContent}>
+        <Link href="/notificationsPage">
+        <button className={styles.topBarButton}>
+          <i className={`fa-solid fa-bell ${styles.icon}`}></i> Notifications
+        </button>
+        </Link>
 
-                    <section className={styles.content}>
-                        <Feed />
-                    </section>
+      </div>
+  
+    <div className={styles.layoutContainer}>
+      <aside className={styles.sidebar}>
+        <UserProfile />
+      </aside>
+    <div className={styles.mainContent}>
 
-                </div>
-            </div>
-        </div>
-    );
+      <section className={styles.content}>
+        <Feed />
+      </section>
+
+      </div>
+    </div>
+  </div>  
+  );
 }
