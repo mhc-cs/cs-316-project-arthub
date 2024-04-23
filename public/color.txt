@@ -1,0 +1,2 @@
+Background : #FDFD96
+Accent color: rgb(255, 128, 13) #FF800D

@@ -7,12 +7,14 @@ import styles from './page.module.css';
 
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
+
 import firebaseConfig from '../firebase/firebaseConfig';
 import { doc, setDoc, getDoc, getFirestore } from 'firebase/firestore';
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+
 const db = getFirestore();
 
 const FirstScreen = () => {
@@ -64,7 +66,9 @@ const FirstScreen = () => {
   };
 
   return (
+
     <div className={styles.container}>
+
       <div className={styles.loginContainer}>
       <div className="box"></div>
         <img src="./design/Logo.png" alt="Decorative icon" className={styles.icon}/>
@@ -75,8 +79,16 @@ const FirstScreen = () => {
           LOGIN WITH GOOGLE
         </button>
       </div>
+
     </div>
+  </div>
   );
 };
 
 export default FirstScreen;
+
+
+
+
+
+

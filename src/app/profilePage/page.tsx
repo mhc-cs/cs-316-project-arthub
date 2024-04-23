@@ -7,9 +7,14 @@ import UserPortfolio from '../../components/UserPortfolio';
 import UserFeed from '../../components/UserFeed';
 import SearchBar from '../../components/SearchBar';
 import UserProfile from '../../components/UserProfile';
+
+import { signIn } from 'next-auth/react';
+
 import UserProfileUpdate from '../../components/UserProfileUpdate';
 
+
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Link from 'next/link';
 
 export default function ProfilePage() {
 
@@ -26,15 +31,27 @@ export default function ProfilePage() {
         <div className={styles.searchBarContainer}>
           <SearchBar />
         </div>
-        <button className={styles.topBarButton}>
-          <i className={`fas fa-user-friends ${styles.icon}`}></i> My Network
-        </button>
-        <button className={styles.topBarButton}>
-          <i className={`fa-solid fa-message ${styles.icon}`}></i> Messages
-        </button>
-        <button className={styles.topBarButton}>
-          <i className={`fa-solid fa-bell ${styles.icon}`}></i> Notifications
-        </button>
+
+
+        <Link href="/networkPage">
+          <button className={styles.topBarButton}>
+            <i className={`fas fa-user-friends ${styles.icon}`}></i> My Network
+          </button>
+        </Link>
+
+        <Link href="/messagesPage">
+          <button className={styles.topBarButton}>
+            <i className={`fa-solid fa-message ${styles.icon}`}></i> Messages
+          </button>
+        </Link>
+
+        <Link href="/notificationsPage">
+          <button className={styles.topBarButton}>
+            <i className={`fa-solid fa-bell ${styles.icon}`}></i> Notifications
+          </button>
+        </Link>
+
+
       </div>
 
       <div className={styles.layoutContainer}>
