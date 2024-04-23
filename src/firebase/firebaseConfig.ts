@@ -29,6 +29,7 @@ if (!getApps().length) {
 }
 
 // Initialize Firebase
+
 //const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
@@ -42,9 +43,6 @@ const storage = getStorage(app);
 // // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
 // export const auth = getAuth(app);
-
-
-
 
 // Move the code using the useAuthState hook inside a React function component
 

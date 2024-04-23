@@ -8,7 +8,7 @@ import UserFeed from '../../components/UserFeed';
 import SearchBar from '../../components/SearchBar';
 import UserProfile from '../../components/UserProfile';
 
-import { signIn } from 'next-auth/react';
+//import { signIn } from 'next-auth/react';
 
 import UserProfileUpdate from '../../components/UserProfileUpdate';
 
