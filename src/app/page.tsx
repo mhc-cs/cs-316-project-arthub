@@ -8,7 +8,7 @@ import styles from './page.module.css';
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 
-import {firebaseConfig} from '../firebase/firebaseConfig';
+import { firebaseConfig } from '../firebase/firebaseConfig';
 import { doc, setDoc, getDoc, getFirestore } from 'firebase/firestore';
 
 // Initialize Firebase
@@ -69,18 +69,20 @@ const FirstScreen = () => {
 
     <div className={styles.container}>
 
-      <div className={styles.loginContainer}>
-      <div className="box"></div>
-        <img src="./design/Logo.png" alt="Decorative icon" className={styles.icon}/>
-        <button onClick={() => signInWithGoogle(true)} className={styles.topBarButton}>
-          SIGN UP WITH GOOGLE
-        </button>
-        <button onClick={() => signInWithGoogle(false)} className={styles.topBarButton}>
-          LOGIN WITH GOOGLE
-        </button>
-      </div>
-
+    <div className={styles.loginContainer}>
+    <div className="box"></div>
+      <img src="https://i.pinimg.com/originals/b8/c5/b1/b8c5b1b6c6fa24e202ea0e8fe7ed988d.png" alt="Decorative icon" className={styles.icon}/>
+      <button onClick={() => signInWithGoogle(true)} className={styles.topBarButton}>
+        SIGN UP WITH GOOGLE
+      </button>
+      <button onClick={() => signInWithGoogle(false)} className={styles.topBarButton}>
+        LOGIN WITH GOOGLE
+      </button>
     </div>
+
+  </div>
+
+
   );
 };
 
