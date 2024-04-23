@@ -4,6 +4,7 @@ import React, { useState, KeyboardEvent } from 'react';
 import styles from './page.module.css';
 
 import SearchBar from '../../components/SearchBar';
+import Link from 'next/link';
 
 
 {/* <div 
@@ -38,37 +39,37 @@ const users: User[] = [
 ];
 
 const initialMessages: Messages = {
-  1: [{ id: 1, text: 'Great collab!'}],
-  2: [{ id: 1, text: 'Hi! How are you?'}],
-  3: [{ id: 1, text: 'Good morning!'}],
+  1: [{ id: 1, text: 'Great collab!' }],
+  2: [{ id: 1, text: 'Hi! How are you?' }],
+  3: [{ id: 1, text: 'Good morning!' }],
 };
 
 const MessagesPage: React.FC = () => {
   //const [activeUser, setActiveUser] = useState<number>(users[0].id);
-  
-    const [activeUser, setActiveUser] = useState<number>(users[0].id);
-    const [userMessages, setUserMessages] = useState<Messages>({...initialMessages});
-    const [newMessage, setNewMessage] = useState<string>('');
-  
-    const handleSendMessage = () => {
-      if (!newMessage.trim()) return; // Ignore empty messages
-  
-      const newMessageObj: Message = {
-        id: Math.random(), 
-        text: newMessage,
-        //fromMe: true,
-      };
-  
-      const updatedMessages = {...userMessages, [activeUser]: [...userMessages[activeUser], newMessageObj]};
-      setUserMessages(updatedMessages);
-      setNewMessage(''); // Reset input field
+
+  const [activeUser, setActiveUser] = useState<number>(users[0].id);
+  const [userMessages, setUserMessages] = useState<Messages>({ ...initialMessages });
+  const [newMessage, setNewMessage] = useState<string>('');
+
+  const handleSendMessage = () => {
+    if (!newMessage.trim()) return; // Ignore empty messages
+
+    const newMessageObj: Message = {
+      id: Math.random(),
+      text: newMessage,
+      //fromMe: true,
     };
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Enter') {
-        handleSendMessage();
-      }
-    };
+    const updatedMessages = { ...userMessages, [activeUser]: [...userMessages[activeUser], newMessageObj] };
+    setUserMessages(updatedMessages);
+    setNewMessage(''); // Reset input field
+  };
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      handleSendMessage();
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -76,15 +77,21 @@ const MessagesPage: React.FC = () => {
         <div className={styles.searchBarContainer}>
           <SearchBar />
         </div>
-        <button className={styles.topBarButton}>
-          <i className={`fas fa-user-friends ${styles.icon}`}></i> My Network
-        </button>
-        <button className={styles.topBarButton}>
-          <i className={`fa-solid fa-message ${styles.icon}`}></i> Messages
-        </button>
-        <button className={styles.topBarButton}>
-          <i className={`fa-solid fa-bell ${styles.icon}`}></i> Notifications
-        </button>
+        <Link href="/networkPage">
+          <button className={styles.topBarButton}>
+            <i className={`fas fa-user-friends ${styles.icon}`}></i> My Network
+          </button>
+        </Link>
+        <Link href="/messagesPage">
+          <button className={styles.topBarButton}>
+            <i className={`fa-solid fa-message ${styles.icon}`}></i> Messages
+          </button>
+        </Link>
+        <Link href="/notificationsPage">
+          <button className={styles.topBarButton}>
+            <i className={`fa-solid fa-bell ${styles.icon}`}></i> Notifications
+          </button>
+        </Link>
       </div>
 
       <div className={styles.layoutContainer}>
@@ -103,13 +110,13 @@ const MessagesPage: React.FC = () => {
 
         <div className={styles.mainContent}>
           <div className={styles.messagesContainer}>
-          {userMessages[activeUser]?.map((message, index) => (
-            <div 
-            key={message.id} 
-            className={`${styles.message} ${index === 0 ? styles.messageReceived : styles.messageSent}`}
-          >
-            <p>{message.text}</p>
-          </div>
+            {userMessages[activeUser]?.map((message, index) => (
+              <div
+                key={message.id}
+                className={`${styles.message} ${index === 0 ? styles.messageReceived : styles.messageSent}`}
+              >
+                <p>{message.text}</p>
+              </div>
             ))}
           </div>
 

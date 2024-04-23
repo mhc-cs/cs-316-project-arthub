@@ -16,9 +16,12 @@ export default function homePage() {
       <div className={styles.searchBarContainer}>
         <SearchBar />
       </div>
+
+      <Link href="/networkPage">
         <button className={styles.topBarButton}>
           <i className={`fas fa-user-friends ${styles.icon}`}></i> My Network
         </button>
+      </Link>
 
         <Link href="/messagesPage">
         <button className={styles.topBarButton}>
@@ -26,9 +29,12 @@ export default function homePage() {
         </button>
         </Link>
 
+        <Link href="/notificationsPage">
         <button className={styles.topBarButton}>
           <i className={`fa-solid fa-bell ${styles.icon}`}></i> Notifications
         </button>
+        </Link>
+
       </div>
   
     <div className={styles.layoutContainer}>
