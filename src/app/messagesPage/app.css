@@ -7,6 +7,7 @@
 
 .ce-my-message-body.false {
   background-color: #045c5a !important;
+
   color: white !important;
 }
 .ce-my-message-body.ce-my-message-sending-body {
@@ -18,6 +19,15 @@
 .ce-their-message-body.false {
   background-color: #045c5a !important;
   color: white !important;
+}
+.ce-their-message-body.false {
+  background-color: #045c5a !important;
+  color: white !important;
+}
+
+.ce-their-message-timestamp {
+  color: white !important;
+  letter-spacing: -1px;
 }
 
 .ce-their-message-timestamp {
@@ -58,18 +68,17 @@
   background-color: #f0f0f0 !important;
   padding-bottom: 14px !important;
 }
+
+
 .ce-message-list {
+
   background: linear-gradient(
     0deg,
     rgba(62, 64, 75, 1) 0%,
     #999 75%,
     #999 100%
   ) !important;
-}
 
-.ce-custom-chat-header {
-  height: 70px !important;
-}
 
 .ce-my-message-timestamp {
   color: #045c5a !important;

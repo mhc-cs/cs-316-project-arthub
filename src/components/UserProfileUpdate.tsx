@@ -4,6 +4,7 @@ import styles from '../styles/UserProfileUpdate.module.css';
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import { firebaseConfig } from '../firebase/firebaseConfig';
+
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { doc, setDoc, getDoc, getFirestore, updateDoc } from 'firebase/firestore';
 

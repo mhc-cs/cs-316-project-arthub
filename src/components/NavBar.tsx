@@ -1,4 +1,5 @@
 import styles from '../styles/NavBar.module.css';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import LogoWhite from '../app/design/LogoWhite.png';
@@ -13,18 +14,22 @@ const navBar = () => {
         <Image src={LogoWhite} alt="Decorative icon" className={styles.logo}/>
       </Link>
 
+
       <div className={styles.searchBarContainer}>
         <SearchBar />
       </div>
 
       <Link href="/networkPage">
         <button className={styles.topBarButton}>
+
           <i className={`fas fa-user-friends ${styles.icon}`}></i> Network</button>
       </Link>
 
         <Link href="/messagesPage">
         <button className={styles.topBarButton}>
+
           <i className={`fa-solid fa-message ${styles.icon}`}></i> Messages</button>
+
         </Link>
 
         <Link href="/notificationsPage">
@@ -41,4 +46,5 @@ const navBar = () => {
   
     )
 }
+
 export default navBar;

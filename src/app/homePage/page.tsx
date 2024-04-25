@@ -45,6 +45,12 @@ export default function homePage() {
           <i className={`fa-solid fa-sign-out ${styles.icon}`}></i> Logout</button>
         </Link>
 
+        <Link href="/logOutPage">
+        <button className={styles.topBarButton}>
+          <i className={`fa-solid fa-sign-out ${styles.icon}`}></i> LogOut
+        </button>
+        </Link>
+
       </div>
   
     <div className={styles.layoutContainer}>

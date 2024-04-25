@@ -24,6 +24,7 @@
   /* Adjust based on your design */
   display: flex;
   flex-direction: column;
+
   width: 200px;
 }
 
@@ -50,12 +51,12 @@
   /* Ensure it sits above other content */
   display: flex;
   align-items: center;
-  /*padding: 10px 20px;
   /* Adjust padding as needed */
   gap: 20px;
   /* Space between items */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 
 .logo {
   margin-left: 50px;
@@ -69,11 +70,14 @@
   margin-right: 10px;
   justify-content: center;
   border-radius: 8px; /* Rounded edges */
+
   /* Center the search bar within its container */
 }
 
 .topBarButton {
+
   background-color: #ffffff;
+
   /* Light grey background */
   border: 1px solid #ccc;
   border: none;
@@ -82,11 +86,13 @@
   /* Rounded edges for buttons */
   cursor: pointer;
   font-size: 14px;
+
   font-family: "Open Sans", sans-serif;
   transition: background-color 0.3s;
   margin-right: 1%;
   max-width: 125px;
   align-items: center;
+
 }
 
 .topBarButton:hover {
@@ -95,7 +101,9 @@
 }
 
 .icon {
+
   color: #045c5a;
+
   /* Icon color */
   margin-right: 5px;
 }
@@ -107,6 +115,7 @@
   /*margin-top: 3%;*/
   display: flex;
   background-color: #d8ebea;
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -115,7 +124,9 @@
   .icon,
   .layoutContainer {
     /* Reapply light theme styles */
+
     background-color: #d8ebea;
+
     /* Example: setting background to light for all elements */
     color: #000;
     /* Example: setting text color to dark for readability */
@@ -149,6 +160,7 @@
     display: flex;
     flex-direction: column;
     background-color: #d8ebea;
+
   }
 
   .topBar {
@@ -173,11 +185,14 @@
   }
 
   .topBarButton {
+
     background-color: #ffffff;
+
     /* Light grey background */
     border: 1px solid #ccc;
     border: none;
     padding: 10px 20px;
+
     border-radius: 14px;
     /* Rounded edges for buttons */
     cursor: pointer;
@@ -196,10 +211,12 @@
 
   .topBarButton:hover {
     background-color: #038b89;
+
     /* Lighter color on hover */
   }
 
   .icon {
+
     height: 40px;
     width: 40px;
     color: #045c5a;
@@ -212,6 +229,7 @@
   .icon:hover {
     background-color: transparent;
     /* Lighter color on hover */
+
   }
 
   .layoutContainer {
@@ -219,3 +237,5 @@
     display: flex;
   }
 }
+
+

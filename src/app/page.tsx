@@ -12,7 +12,9 @@ import BGPicture from './design/BGPicture.png'
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 
+
 import { firebaseConfig } from '../firebase/firebaseConfig';
+
 import { doc, setDoc, getDoc, getFirestore } from 'firebase/firestore';
 
 // Initialize Firebase
@@ -86,6 +88,7 @@ const FirstScreen = () => {
     </div>
 
   </div>
+
   );
 };
 
