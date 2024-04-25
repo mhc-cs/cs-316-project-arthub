@@ -1,4 +1,5 @@
 export interface UserData {
+    profileBGPictureUrl?: string | undefined;
     uid: string;
     firstName: string;
     lastName: string;

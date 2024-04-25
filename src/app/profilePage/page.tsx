@@ -59,7 +59,6 @@ export default function ProfilePage() {
           </button>
         </Link>
 
-
       </div>
 
       <div className={styles.layoutContainer}>
@@ -67,7 +66,7 @@ export default function ProfilePage() {
           {/* Toggle between UserProfile and UserProfileUpdate based on isEditing */}
           {isEditing ? <UserProfileUpdate /> : <UserProfile />}
           <button onClick={() => setIsEditing(!isEditing)} className={styles.editProfileButton}>
-          <i className="fas fa-edit"></i>{isEditing ? ' Cancel' : ' Edit Profile'}
+          <i className="fas fa-edit"></i>{isEditing ? ' Close' : ' Edit Profile'}
           </button>
         </aside>
 
