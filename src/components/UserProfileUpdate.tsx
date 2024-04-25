@@ -7,17 +7,9 @@ import { firebaseConfig } from '../firebase/firebaseConfig';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { doc, setDoc, getDoc, getFirestore, updateDoc } from 'firebase/firestore';
 
-import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
+import { UserData } from '../types/UserData'
 
-interface UserData {
-  uid: string;
-  firstName: string;
-  lastName: string;
-  connections: string;
-  bio: string;
-  location: string;
-  profilePictureUrl: string;
-}
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -27,13 +19,18 @@ const storage = getStorage(app);
 const UserProfileUpdate: React.FC = () => {
   const [user, loading, error] = useAuthState(auth); // useAuthState also provides loading and error states you can use
   const [formData, setFormData] = useState<UserData>({
-    uid: '',
+    uid: auth.currentUser?.uid || '', // Ensuring UID is set, consider handling cases where it is not
     firstName: '',
     lastName: '',
-    connections: '',
-    bio: '',
-    location: '',
-    profilePictureUrl: ''
+    dateOfBirth: new Date(),
+    profilePictureUrl: '',
+    gender: '',
+    pronouns: '',
+    artistStatement: '',
+    creativeNiche: '',
+    city: '',
+    work: '',
+    education: ''
   });
 
   const [userData, setUserData] = useState<UserData | null>(null);
@@ -120,18 +117,52 @@ const UserProfileUpdate: React.FC = () => {
       </header>
       <div className={styles.content}>
         <form className={styles.form} onSubmit={handleSaveChanges}>
+
           <div className={styles.inputGroup}>
             <label htmlFor="firstName">First Name:</label>
             <input type="text" id="firstName" name="firstName" className={styles.textInput} value={formData.firstName} onChange={handleInputChange} />
           </div>
+
           <div className={styles.inputGroup}>
             <label htmlFor="lastName">Last Name:</label>
             <input type="text" id="lastName" name="lastName" className={styles.textInput} value={formData.lastName} onChange={handleInputChange} />
           </div>
+
+          <div className={styles.inputGroup}>
+            <label htmlFor="pronouns">Pronouns:</label>
+            <input type="text" id="pronouns" name="pronouns" className={styles.textInput} value={formData.pronouns} onChange={handleInputChange} />
+          </div>
+
           <div className={styles.inputGroup}>
             <label htmlFor="profilePicture">Profile Picture:</label>
             <input type="file" id="profilePicture" name="profilePicture" className={styles.fileInput} onChange={handleImageChange} />
           </div>
+
+          <div className={styles.inputGroup}>
+            <label htmlFor="artistStatement">Artist Statement:</label>
+            <input type="text" name="artistStatement" className={styles.textInput} value={formData.artistStatement} onChange={handleInputChange} />
+          </div>
+
+          <div className={styles.inputGroup}>
+            <label htmlFor="creativeNiche">Creative Niche:</label>
+            <input type="text" name="creativeNiche" className={styles.textInput} value={formData.creativeNiche} onChange={handleInputChange} />
+          </div>
+
+          <div className={styles.inputGroup}>
+            <label htmlFor="city">City:</label>
+            <input type="text" name="city" className={styles.textInput} value={formData.city} onChange={handleInputChange} />
+          </div>
+
+          <div className={styles.inputGroup}>
+            <label htmlFor="work">Work:</label>
+            <input type="text" name="work" className={styles.textInput} value={formData.work} onChange={handleInputChange} />
+          </div>
+
+          <div className={styles.inputGroup}>
+            <label htmlFor="education">Education:</label>
+            <input type="text" name="education" className={styles.textInput} value={formData.education} onChange={handleInputChange} />
+          </div>
+
           <footer className={styles.footer}>
             <button type="submit" className={styles.button}>Save Changes</button>
           </footer>

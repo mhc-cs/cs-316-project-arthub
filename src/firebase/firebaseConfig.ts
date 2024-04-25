@@ -28,21 +28,12 @@ if (!getApps().length) {
   app = getApps()[0]; // if already initialized, use that one
 }
 
-// Initialize Firebase
-
-//const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 // Initialize Firebase Storage and get a reference to the service
 const storage = getStorage(app);
-
-
-
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-// export const auth = getAuth(app);
 
 // Move the code using the useAuthState hook inside a React function component
 
@@ -53,4 +44,4 @@ function GetUser() {
 
 const firestore = getFirestore(app);
 
-export { db, auth, firestore, GetUser, firebaseConfig};
+export { auth, db, app, firestore, GetUser, firebaseConfig};

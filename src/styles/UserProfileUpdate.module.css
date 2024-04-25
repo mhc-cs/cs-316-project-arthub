@@ -1,12 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
 .window {
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  margin: 20px;
+  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 10px; 
+  background-color: #ffffff;
+  width: 450px; /* Start with a relative width */
+  /*border-radius: 0px;*/
+  border: 1px solid #045C5A;
+
+  margin-left: 20%;
+  margin-top: 25%;
+}
+
+.form {
+  display: flex;        /* Use flexbox to layout the form */
+  flex-direction: column; /* Stack the children vertically */
+  align-items: stretch; /* Stretch children to match the width of the form */
+  padding: 20px;       /* Add padding around the form */
+  background-color: #f8f8f8; /* Light background for the form */
+  border-radius: 8px;   /* Rounded corners for the form */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+  max-width: 500px;    /* Maximum width of the form */
+  margin: auto;        /* Center the form horizontally */
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Label styling */
+.label {
+  display: block;      /* Make labels block to take full width */
+  margin-bottom: 5px;  /* Space between label and input */
+  color: #333;         /* Dark color for text for better readability */
+  font-family: 'Open Sans', sans-serif;
 }
 
 .header {
@@ -16,24 +44,30 @@
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   text-align: center;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .content {
   padding: 20px;
   flex-grow: 1;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .inputGroup {
+  display: flex;
   margin-bottom: 10px;
+  width: auto;
+  font-family: 'Open Sans', sans-serif;
 }
 
-.textInput { /* Changed from generic selector to a class */
+.textInput { 
   width: 100%;
   padding: 8px;
   margin-top: 5px;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .footer {
@@ -43,16 +77,18 @@
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   text-align: right;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .button {
   padding: 6px 12px;
-  background-color: #007bff;
+  background-color: #045C5A;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
 }
 .button:hover {
-  background-color: #0056b3;
+  background-color: #045C5A;
 }

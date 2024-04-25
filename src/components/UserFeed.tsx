@@ -260,7 +260,7 @@ const UserFeed = () => {
                 setCommentText('');
               }} className={styles.commentForm}>
                 <input type="text" placeholder="Add a comment..." value={commentText} onChange={e => setCommentText(e.target.value)} className={styles.commentInput} />
-                <button type="submit" className={styles.commentButton}>Post</button>
+                <button type="submit" className={styles.commentButton}> <i className={`fa-solid fa-comment ${styles.icon}`}></i></button>
               </form>
             </div>
           </div>
