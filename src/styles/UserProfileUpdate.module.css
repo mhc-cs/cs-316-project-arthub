@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
 .window {
@@ -5,11 +6,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 20px;
   gap: 10px; 
   background-color: #ffffff;
-  width: 450px; /* Start with a relative width */
+  width: 148%; /* Start with a relative width */
   /*border-radius: 0px;*/
+  height: 1000px;
   border: 1px solid #045C5A;
 
   margin-left: 20%;
@@ -20,6 +23,7 @@
   display: flex;        /* Use flexbox to layout the form */
   flex-direction: column; /* Stack the children vertically */
   align-items: stretch; /* Stretch children to match the width of the form */
+  justify-content: center;
   padding: 20px;       /* Add padding around the form */
   background-color: #f8f8f8; /* Light background for the form */
   border-radius: 8px;   /* Rounded corners for the form */
@@ -35,60 +39,50 @@
   margin-bottom: 5px;  /* Space between label and input */
   color: #333;         /* Dark color for text for better readability */
   font-family: 'Open Sans', sans-serif;
-}
-
-.header {
-  padding: 10px;
-  background-color: #f5f5f5;
-  border-bottom: 1px solid #ddd;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  padding: 10px;
 }
 
 .content {
-  padding: 20px;
-  flex-grow: 1;
-  font-family: 'Open Sans', sans-serif;
-}
-
-.profilePic {
-  width: 100px; /* Adjust size as needed */
-  height: 100px; /* Adjust size as needed */
-  border-radius: 50%; /* Creates a circular image */
+  width: 100%; /* Ensure it covers the container width */
+  height: 600%; /* Adjust as needed */
   object-fit: cover;
-  border: 1px solid #ccc;
-  z-index: 2;
+  border-top-left-radius: 8px; /* Match container's border radius */
+  border-top-right-radius: 8px;
+  position: absolute;
+  top: 0;
+  align-items: center;
 }
 
 .profileBGPic {
   width: 100%; /* Ensure it covers the container width */
-  height: 100px; /* Adjust as needed */
+  height: 8%; /* Adjust as needed */
   object-fit: cover;
-  border-top-left-radius: 8px; /* Match container's border radius */
-  border-top-right-radius: 8px;
+  border-top-left-radius: 0px; /* Match container's border radius */
+  border-top-right-radius: 0px;
   position: absolute;
   top: 0;
-  z-index: -1;
+  border-bottom: 2px solid #045C5A;
+  opacity: 0.9;
+
 }
 
-.BGcontent {
-  width: 100%;
-  height: auto;
+.profilePic {
+  width: 25%; /* Adjust size as needed */
+  height: auto; /* Adjust size as needed */
+  border-radius: 50%; /* Creates a circular image */
   object-fit: cover;
-  border-top-left-radius: 8px; /* Match container's border radius */
-  border-top-right-radius: 8px;
-  position: absolute;
-  top: 0;
-  z-index: -1;
+  margin-left: 35%;
+  border: 1px solid #045C5A;
+  z-index: 10;
 }
 
 .inputGroup {
   display: flex;
   margin-bottom: 10px;
+  flex-direction: column;
   width: auto;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Amatic SC';
 }
 
 .textInput { 
@@ -98,7 +92,9 @@
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Amatic SC';
+  align-items: center;
+  
 }
 
 .footer {
@@ -109,6 +105,7 @@
   border-bottom-right-radius: 8px;
   text-align: right;
   font-family: 'Open Sans', sans-serif;
+  
 }
 
 .button {

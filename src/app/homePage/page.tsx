@@ -44,6 +44,7 @@ export default function homePage() {
   
     <div className={styles.layoutContainer}>
       <aside className={styles.sidebar}>
+        profileDetails
         <UserProfile />
       </aside>
     <div className={styles.mainContent}>

@@ -23,8 +23,6 @@ export default function ProfilePage() {
 
   const [activeView, setActiveView] = useState('Portfolio'); // Start with Portfolio
 
-
-
   const [isEditing, setIsEditing] = useState(false);
 
   return (
@@ -65,9 +63,11 @@ export default function ProfilePage() {
         <aside className={styles.sidebar}>
           {/* Toggle between UserProfile and UserProfileUpdate based on isEditing */}
           {isEditing ? <UserProfileUpdate /> : <UserProfile />}
+
           <button onClick={() => setIsEditing(!isEditing)} className={styles.editProfileButton}>
           <i className="fas fa-edit"></i>{isEditing ? ' Close' : ' Edit Profile'}
           </button>
+
         </aside>
 
         <div className={styles.mainContent}>
