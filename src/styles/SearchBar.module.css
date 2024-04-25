@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
 .searchContainer {
     display: flex;
     align-items: center;
@@ -12,11 +14,13 @@
     display: flex;
     align-items: center;
     border-radius: 8px; 
+    
 }
   
   .searchInput {
     padding: 10px 10px 10px 40px;
     font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
     border-radius: 8px; 
     background-color: #f0f0f0; /* Light grey background */
     border: 1px solid #ccc;

@@ -3,6 +3,9 @@
 import React, { useEffect } from 'react';
 import styles from './page.module.css';
 
+import Image from 'next/image';
+import FullLogoWhite from './design/FullLogoWhite.png';
+
 //import GragientBG from './design/GradientBG'
 
 import { initializeApp } from 'firebase/app';
@@ -71,7 +74,7 @@ const FirstScreen = () => {
 
     <div className={styles.loginContainer}>
     <div className="box"></div>
-      <img src="https://i.pinimg.com/originals/b8/c5/b1/b8c5b1b6c6fa24e202ea0e8fe7ed988d.png" alt="Decorative icon" className={styles.icon}/>
+      <Image src={FullLogoWhite} alt="Decorative icon" className={styles.logo}/>
       <button onClick={() => signInWithGoogle(true)} className={styles.topBarButton}>
         SIGN UP WITH GOOGLE
       </button>

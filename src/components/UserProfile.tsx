@@ -31,34 +31,35 @@ export default function UserProfile() {
   const connectionsLink = `/connections/${user?.uid}`;
   const hashtagsLink = `/hashtags/${user?.uid}`;
 
-  return (
-    <div className={styles.profileContainer}>
-      {/* Conditionally render data if userData is not null */}
-      {userData && (
-        <>
-          <img src={userData.profilePictureUrl} alt="User Profile" className={styles.profilePic} />
-          <button className={styles.userButton}>
-            <h2 className={styles.userName}>
-            {user && (
-              <Link href={`/profilePage`}>
-                {userData.firstName} {userData.lastName}
-              </Link>
-            )}
-            </h2>
-          </button>
-          <div className={styles.userStats}>
-            <button className={styles.userButton}>
-              <Link href={connectionsLink}>
-              </Link>
-            </button>
-            
-            <button className={styles.userButton}>
-              <Link href={hashtagsLink}>
-              </Link>
-            </button>
-          </div>
-        </>
-      )}
-    </div>
-  );
+    return (
+      <div className={styles.profileContainer}>
+        {/* Conditionally render data if userData is not null */}
+        {userData && (
+          <>
+            <img src={userData.profilePictureUrl} alt="User Profile" className={styles.profilePic} />
+            <div className={styles.profileDetails}>
+              <h2 className={styles.userName}>
+                {user && (
+                  <Link href={`/profilePage`}>
+                    {userData.firstName} {userData.lastName}
+                  </Link>
+                )}
+              </h2>
+              {userData.pronouns && <p className={styles.userPronouns}>{userData.pronouns}</p>}
+              {userData.artistStatement && <p className={styles.userArtistStatement}>{userData.artistStatement}</p>}
+              {userData.creativeNiche && <p className={styles.userCreativeNiche}>{userData.creativeNiche}</p>}
+            </div>
+            <div className={styles.userStats}>
+              <button className={styles.userButton}>
+                <Link href={connectionsLink}>Connections</Link>
+              </button>
+              
+              <button className={styles.userButton}>
+                <Link href={hashtagsLink}>Hashtags</Link>
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+    );
 }

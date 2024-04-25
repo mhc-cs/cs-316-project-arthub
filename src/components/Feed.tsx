@@ -221,10 +221,13 @@ const Feed = () => {
           {
             isDragActive ?
               <p>Drop the images here ...</p> :
-              <button className={styles.addButton}>Add media</button>
+              <button className={styles.addButton}>
+                <i className={`fa-solid fa-image ${styles.icon}`}></i></button>
+              
           }
         </div>
-        <button className={styles.postButton} onClick={handlePost}>Post</button>
+        <button className={styles.postButton} onClick={handlePost}>
+        <i className={`far fa-plus-circle ${styles.icon}`}></i> Post</button>
       </div>
 
 
@@ -239,7 +242,7 @@ const Feed = () => {
 
           <div className={styles.interactions}>
             <button className={styles.likeButton} onClick={() => toggleLike(post.id)}>
-              <i className={`fa-solid fa-heart ${styles.icon}`}></i> Like ({post.likes?.length || 0})
+              <i className={`fa-solid fa-heart ${styles.icon2}`}></i> Like ({post.likes?.length || 0})
             </button>
 
             <div className={styles.commentsContainer}>
@@ -260,7 +263,8 @@ const Feed = () => {
               }} className={styles.commentForm}>
 
                 <input type="text" placeholder="Add a comment..." value={commentText} onChange={e => setCommentText(e.target.value)} className={styles.commentInput} />
-                <button type="submit" className={styles.commentButton}>Post</button>
+                <button type="submit" className={styles.commentButton}> <i className={`fa-solid fa-comment ${styles.icon}`}></i>
+                  </button>
               </form>
             </div>
           </div>
