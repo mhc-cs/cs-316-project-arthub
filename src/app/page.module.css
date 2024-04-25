@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
-
 .container {
   background-image: url('./design/BGPicture.png');
   background-size: cover;  /* Cover the entire container */
@@ -58,4 +56,10 @@
   width: 27%;  /* Set the width of the box */
   height: 200px; /* Set the height of the box */
   margin: 20px; /* Add some margin for spacing around the box */
+}
+
+.testBG {
+  width: 100%;
+  height: auto;
+  z-index: 10;  
 }

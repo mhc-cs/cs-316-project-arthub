@@ -5,6 +5,7 @@ import styles from './page.module.css';
 
 import Image from 'next/image';
 import FullLogoWhite from './design/FullLogoWhite.png';
+import BGPicture from './design/BGPicture.png'
 
 //import GragientBG from './design/GradientBG'
 
@@ -36,6 +37,7 @@ const FirstScreen = () => {
               firstName: 'First Name',
               lastName: 'Last Name',
               profilePictureUrl: 'https://placehold.co/100x100',
+              profileBGPictureUrl: 'https://placehold.co/100x100',
             }, { merge: true });
             console.log("Document created");
           } catch (error) {
@@ -74,7 +76,7 @@ const FirstScreen = () => {
 
     <div className={styles.loginContainer}>
     <div className="box"></div>
-      <Image src={FullLogoWhite} alt="Decorative icon" className={styles.logo}/>
+      <Image src={FullLogoWhite} alt="Decorative icon" className={styles.BGPicture}/>
       <button onClick={() => signInWithGoogle(true)} className={styles.topBarButton}>
         SIGN UP WITH GOOGLE
       </button>

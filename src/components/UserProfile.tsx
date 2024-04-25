@@ -33,10 +33,20 @@ export default function UserProfile() {
 
     return (
       <div className={styles.profileContainer}>
+        <div className={styles.BGContainer}>
+          {/* Conditionally render data if userData is not null */}
+        {userData && (
+          <>
+            <img src={userData.profilePictureUrl} alt="User Profile" className={styles.profilePic}/>
+            
+          </>
+        )}
+        </div>
         {/* Conditionally render data if userData is not null */}
         {userData && (
           <>
-            <img src={userData.profilePictureUrl} alt="User Profile" className={styles.profilePic} />
+            <img src={userData.profilePictureUrl} alt="User Profile" className={styles.profilePic}/>
+            
             <div className={styles.profileDetails}>
               <h2 className={styles.userName}>
                 {user && (
@@ -46,8 +56,8 @@ export default function UserProfile() {
                 )}
               </h2>
               {userData.pronouns && <p className={styles.userPronouns}>{userData.pronouns}</p>}
-              {userData.artistStatement && <p className={styles.userArtistStatement}>{userData.artistStatement}</p>}
               {userData.creativeNiche && <p className={styles.userCreativeNiche}>{userData.creativeNiche}</p>}
+              {userData.artistStatement && <p className={styles.userArtistStatement}>{userData.artistStatement}</p>}
             </div>
             <div className={styles.userStats}>
               <button className={styles.userButton}>

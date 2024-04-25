@@ -75,6 +75,7 @@ const UserProfileUpdate: React.FC = () => {
         try {
             await uploadBytes(fileRef, file);
             const photoURL = await getDownloadURL(fileRef);
+            
             setFormData(prevState => ({
                 ...prevState,
                 profilePictureUrl: photoURL  // Ensure the new URL is set in formData
@@ -86,6 +87,28 @@ const UserProfileUpdate: React.FC = () => {
     } else if (!user) {
         alert('User is not logged in.');
     }
+};
+
+const handleBGImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  if (event.target.files && event.target.files.length > 0 && user) {
+      const file = event.target.files[0];
+      const fileRef = storageRef(storage, `profilePictures/${user.uid}`);
+
+      try {
+          await uploadBytes(fileRef, file);
+          const photoURL = await getDownloadURL(fileRef);
+          
+          setFormData(prevState => ({
+              ...prevState,
+              profileBGPictureUrl: photoURL  // Ensure the new URL is set in formData
+          }));
+      } catch (error) {
+          console.error("Error uploading file: ", error);
+          alert('Failed to upload profile picture.');
+      }
+  } else if (!user) {
+      alert('User is not logged in.');
+  }
 };
 
   // Handle form submission
@@ -116,7 +139,26 @@ const UserProfileUpdate: React.FC = () => {
         <h1>Edit Profile</h1>
       </header>
       <div className={styles.content}>
+      {userData ? (
+        <>
+          <img src={userData.profileBGPictureUrl} alt="User Profile" className={styles.profileBGPic} />
+        </>
+      ) : (
+        <p>No user data available</p> /* This will display if userData is null */
+      )}
+    </div>
+      <div className={styles.content}>
         <form className={styles.form} onSubmit={handleSaveChanges}>
+
+        <div className={styles.inputGroup}>
+            <label htmlFor="profilePicture">Background Profile Picture:</label>
+            <input type="file" id="profileBGPicture" name="profileBGPicture" className={styles.fileInput} onChange={handleBGImageChange} />
+          </div>
+
+        <div className={styles.inputGroup}>
+            <label htmlFor="profilePicture">Profile Picture:</label>
+            <input type="file" id="profilePicture" name="profilePicture" className={styles.fileInput} onChange={handleImageChange} />
+          </div>
 
           <div className={styles.inputGroup}>
             <label htmlFor="firstName">First Name:</label>
@@ -131,11 +173,6 @@ const UserProfileUpdate: React.FC = () => {
           <div className={styles.inputGroup}>
             <label htmlFor="pronouns">Pronouns:</label>
             <input type="text" id="pronouns" name="pronouns" className={styles.textInput} value={formData.pronouns} onChange={handleInputChange} />
-          </div>
-
-          <div className={styles.inputGroup}>
-            <label htmlFor="profilePicture">Profile Picture:</label>
-            <input type="file" id="profilePicture" name="profilePicture" className={styles.fileInput} onChange={handleImageChange} />
           </div>
 
           <div className={styles.inputGroup}>
