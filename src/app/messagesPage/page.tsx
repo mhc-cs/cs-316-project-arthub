@@ -8,6 +8,8 @@ import Loading from "../logOutPage/Loading";
 import { auth } from "@/firebase/firebaseConfig";
 import { User } from "firebase/auth";
 
+// const userDocRef = doc(db, 'users', user.uid);
+
 export default function Home() {
   const [user, setUser] = useState<User | null>();
   auth.onAuthStateChanged((user) => setUser(user));
