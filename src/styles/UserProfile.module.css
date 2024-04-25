@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
 .profileContainer {
   position: relative;
   display: flex;
@@ -38,28 +40,30 @@
 .userName, .userBio, .userLocation {
   text-align: center;
   z-index: 2;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .userName {
   font-size: 20px;
   font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .userName a {
   color: inherit; /* Use the parent's text color */
   text-decoration: none; /* Remove underline */
+  font-family: 'Open Sans', sans-serif;
 }
 
 .userBio {
   font-size: 14px;
-  text-overflow: 'ellipsis',
+  text-overflow: 'ellipsis';
+  font-family: 'Open Sans', sans-serif;
 }
 
 .userLocation {
   font-size: 12px;
-}
-.userLocation {
-  font-size: 12px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .userStats {
@@ -70,6 +74,7 @@
   gap: 8px; 
   margin-top: 5%;
   font-size: 12px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .statLink {
@@ -78,6 +83,7 @@
   width: 100%;
   text-decoration: none; 
   color: inherit; 
+  font-family: 'Open Sans', sans-serif;
 }
 .statLink:hover {
   text-decoration: underline; /* Underline on hover */
@@ -90,6 +96,7 @@ cursor: pointer;
 border: none;
 transition: background-color 0.3s;
 border-radius: 8px;
+font-family: 'Open Sans', sans-serif;
 }
 .userButton:hover {
 background-color: #e1e1e1; /* Lighter color on hover */

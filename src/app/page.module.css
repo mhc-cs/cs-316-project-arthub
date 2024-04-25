@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
 .container {
   background-image: url('./design/BGPicture.png');
@@ -40,6 +41,7 @@
   border-radius: 10px; /* Adjust this value to increase or decrease roundness of buttons */
   text-decoration: none;
   transition: background-color 0.3s;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .topBarButton:hover {

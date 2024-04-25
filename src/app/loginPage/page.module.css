@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
 .container {
     background-image: url('../design/BGLogin.png');
     background-size: cover;  /* Cover the entire container */
@@ -27,6 +29,7 @@
     margin-bottom: 5px;
     font-weight: bold;
     color: black; /* Text color for buttons */
+    font-family: 'Open Sans', sans-serif;
 }
 
 .formInput,
@@ -40,11 +43,13 @@
     width: 100%;
     color: #000; /* Text color for input text */
     background-color: #fff; 
+    font-family: 'Open Sans', sans-serif;
 }
 
 .formTextarea {
     height: 100px;
     resize: vertical; /* Allows vertical resize only */
+    font-family: 'Open Sans', sans-serif;
 }
 
 .formButton {
