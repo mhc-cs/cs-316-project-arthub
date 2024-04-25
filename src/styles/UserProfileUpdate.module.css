@@ -83,6 +83,7 @@
   flex-direction: column;
   width: auto;
   font-family: 'Amatic SC';
+  background-color: #ffffff;
 }
 
 .textInput { 
@@ -94,7 +95,7 @@
   border-radius: 4px;
   font-family: 'Amatic SC';
   align-items: center;
-  
+  background-color: #ffffff;
 }
 
 .footer {
