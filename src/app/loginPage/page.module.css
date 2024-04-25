@@ -1,68 +1,67 @@
 .container {
-    background-image: url('../design/BGLogin.png');
-    background-size: cover;  /* Cover the entire container */
-    background-position: center; /* Center the background image */
-    display: flex;
-    justify-content: center; /* Centers horizontally in the flex container */
-    align-items: center; /* Centers vertically in the flex container */
-    height: 100vh; /* Full height of the viewport */
-    width: 100%; /* Full width of the container */
-    background-color: #045C5A; /* Fallback background color */
-  }
+  background-image: url("../design/BGLogin.png");
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the background image */
+  display: flex;
+  justify-content: center; /* Centers horizontally in the flex container */
+  align-items: center; /* Centers vertically in the flex container */
+  height: 100vh; /* Full height of the viewport */
+  width: 100%; /* Full width of the container */
+  background-color: #045c5a; /* Fallback background color */
+}
 
 .formContainer {
-    background-color: #fff1a2;
-    display: flex;
-    flex-direction: column;
-    width: 30%; /* Example: use a percentage of the viewport or container width */
-    height: 100%; 
-    justify-items: center; /* Horizontally centers content within each grid cell */
-    align-items: center;
-    /*border-radius: 10px;*/
-    padding: 40px;
-    border: 2px solid #045C5A;
+  background-color: #fff1a2;
+  display: flex;
+  flex-direction: column;
+  width: 30%; /* Example: use a percentage of the viewport or container width */
+  height: 100%;
+  justify-items: center; /* Horizontally centers content within each grid cell */
+  align-items: center;
+  /*border-radius: 10px;*/
+  padding: 40px;
+  border: 2px solid #045c5a;
 }
 
 .formLabel {
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: black; /* Text color for buttons */
-    font-family: 'Open Sans', sans-serif;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: black; /* Text color for buttons */
+  font-family: "Open Sans", sans-serif;
+
 }
 
 .formInput,
 .formSelect,
 .formTextarea {
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    width: 100%;
-    color: #000; /* Text color for input text */
-    background-color: #fff; 
-    font-family: 'Open Sans', sans-serif;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  color: #000; /* Text color for input text */
+  background-color: #fff;
+  font-family: "Open Sans", sans-serif;
 }
 
 .formTextarea {
-    height: 100px;
-    resize: vertical; /* Allows vertical resize only */
-    font-family: 'Open Sans', sans-serif;
+  height: 100px;
+  resize: vertical; /* Allows vertical resize only */
+  font-family: "Open Sans", sans-serif;
 }
 
 .formButton {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: black;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
 .formButton:hover {
-    background-color: #0056b3;
-
+  background-color: #0056b3;
 }
-
