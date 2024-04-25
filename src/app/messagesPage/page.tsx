@@ -5,10 +5,9 @@ import { useState } from "react";
 import LogOut from "../logOutPage/page";
 import ChatPage from "./ChatsPage";
 import Loading from "../logOutPage/Loading";
-import { auth } from "@/firebase/firebaseConfig";
+import { auth} from "@/firebase/firebaseConfig";
 import { User } from "firebase/auth";
 
-// const userDocRef = doc(db, 'users', user.uid);
 
 export default function Home() {
   const [user, setUser] = useState<User | null>();
