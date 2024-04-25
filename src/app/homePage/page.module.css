@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
-
 .main {
   display: flex;
   flex-direction: row;
@@ -38,7 +36,8 @@
   /*  #30D5C8 100% /* Continue Pastel Yellow to 100% */
   /*);*/
   background-image: url('../design/TopBar.jpeg');
-  background-size: cover;  /* Cover the entire container */
+  background-size: cover;
+  /* Cover the entire container */
   width: 100%;
   height: 100px;
   position: fixed;
@@ -61,7 +60,7 @@
 
 .logo {
   margin-left: 50px;
-  margin-right: 10px; 
+  margin-right: 10px;
   height: 100px;
   width: auto;
 }
@@ -70,7 +69,8 @@
   margin-left: 5%;
   margin-right: 10px;
   justify-content: center;
-  border-radius: 8px; /* Rounded edges */
+  border-radius: 8px;
+  font-size: 14px;
   /* Center the search bar within its container */
 }
 
@@ -113,11 +113,9 @@
 
 @media (prefers-color-scheme: dark) {
 
-  .searchBarContainer,
   .topBarButton,
   .icon,
-  .layoutContainer
-  {
+  .layoutContainer {
     /* Reapply light theme styles */
     background-color: #d8ebea;
     /* Example: setting background to light for all elements */
@@ -185,14 +183,15 @@
     border-radius: 14px;
     /* Rounded edges for buttons */
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px;
     font-family: 'Open Sans', sans-serif;
     transition: background-color 0.3s;
     margin-right: 1%;
-    display: flex; 
-    width: 100px;
-    height: 60px;
-    flex-direction: column; /* Aligns children vertically */
+    display: flex;
+    width: 95px;
+    height: 50px;
+    flex-direction: column;
+    /* Aligns children vertically */
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -203,15 +202,21 @@
     /* Lighter color on hover */
   }
 
+  .searchBarContainer {
+    background-color: #d8ebea;
+    color: #000;
+    height: 50px;
+  }
+
   .icon {
     height: 40px;
     width: 40px;
     color: #045C5A;
-    font-size: 20px; 
+    font-size: 20px;
     /* Icon color */
     margin-right: 5px;
     background-color: transparent;
-    
+
   }
 
   .icon:hover {

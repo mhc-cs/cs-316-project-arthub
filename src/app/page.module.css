@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
-
 .container {
-  /*background-image: url(./design/BGPicture.png);*/
+  background-image: url(./design/BGPicture.png);
   background-size: cover;  /* Cover the entire container */
   background-position: center; /* Center the background image */
   display: flex;
@@ -41,7 +39,6 @@
   border-radius: 10px; /* Adjust this value to increase or decrease roundness of buttons */
   text-decoration: none;
   transition: background-color 0.3s;
-  font-family: 'Open Sans', sans-serif;
 }
 
 .topBarButton:hover {
@@ -58,4 +55,10 @@
   width: 27%;  /* Set the width of the box */
   height: 200px; /* Set the height of the box */
   margin: 20px; /* Add some margin for spacing around the box */
+}
+
+.testBG {
+  width: 100%;
+  height: auto;
+  z-index: 10;  
 }
