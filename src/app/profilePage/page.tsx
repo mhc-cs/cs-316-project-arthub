@@ -8,7 +8,7 @@ import UserFeed from '../../components/UserFeed';
 import SearchBar from '../../components/SearchBar';
 import UserProfile from '../../components/UserProfile';
 
-import { signIn } from 'next-auth/react';
+// import { signIn } from 'next-auth/react';
 
 import UserProfileUpdate from '../../components/UserProfileUpdate';
 
@@ -51,6 +51,11 @@ export default function ProfilePage() {
           </button>
         </Link>
 
+        <Link href="/logOutPage">
+        <button className={styles.topBarButton}>
+          <i className={`fa-solid fa-sign-out ${styles.icon}`}></i> LogOut
+        </button>
+        </Link>
 
       </div>
 
