@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
 .container {
-  background-image: url('./design/BGPicture.png');
+  /*background-image: url(./design/BGPicture.png);*/
   background-size: cover;  /* Cover the entire container */
   background-position: center; /* Center the background image */
   display: flex;
