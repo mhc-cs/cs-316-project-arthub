@@ -4,11 +4,11 @@ import Image from "next/image";
 
 const UserComponent = (user: UserData) => {
   const router = useRouter();
-
+  const imageUrl = user?.profilePictureUrl || "/images/default-profile-picture.jpg";
   return (
     <div className="flex flex-row space-x-4 items-center" onClick={() => router.push(`/chat/${user.uid}`)}>
       <Image
-        src={user?.profilePictureUrl}
+        src={imageUrl}
         width={40}
         height={40}
         alt={user?.firstName}

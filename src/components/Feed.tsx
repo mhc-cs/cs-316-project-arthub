@@ -207,7 +207,7 @@ const Feed = () => {
     return (
       <>
         {parts.map(part => 
-          hashtagRegex.test(part) ? <span style={{ color: '#0080ff' }}>{part}</span> : part
+          hashtagRegex.test(part) ? <span key={null} style={{ color: '#0080ff' }}>{part}</span> : part
         )}
       </>
     );
