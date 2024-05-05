@@ -1,11 +1,11 @@
 
-"use client"
+"use client";
 import { useState } from "react";
 
-import LogOut from "../logOutPage/page";
+import Logout from "../logoutPage/page";
 import ChatPage from "./ChatsPage";
-import Loading from "../logOutPage/Loading";
-import { auth} from "@/firebase/firebaseConfig";
+import Loading from "../logoutPage/Loading";
+import { auth } from "@/firebase/firebaseConfig";
 import { User } from "firebase/auth";
 
 
@@ -16,7 +16,7 @@ export default function Home() {
   if (user === undefined) {
     return <Loading />;
   } else if (user === null) {
-    return <LogOut />;
+    return <Logout />;
   } else {
     return <ChatPage user={user} />;
   }

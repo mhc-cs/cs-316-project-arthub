@@ -8,7 +8,10 @@ import UserFeed from '../../components/UserFeed';
 import SearchBar from '../../components/SearchBar';
 import UserProfile from '../../components/UserProfile';
 
-// import { signIn } from 'next-auth/react';
+import Image from 'next/image';
+import LogoWhite from '../design/LogoWhite.png';
+
+//import { signIn } from 'next-auth/react';
 
 import UserProfileUpdate from '../../components/UserProfileUpdate';
 
@@ -28,6 +31,11 @@ export default function ProfilePage() {
     <div className={styles.container}>
 
       <div className={styles.topBar}>
+
+      <Link href="/homePage">
+        <Image src={LogoWhite} alt="Decorative icon" className={styles.logo}/>
+      </Link>
+
         <div className={styles.searchBarContainer}>
           <SearchBar />
         </div>
@@ -35,7 +43,7 @@ export default function ProfilePage() {
 
         <Link href="/networkPage">
           <button className={styles.topBarButton}>
-            <i className={`fas fa-user-friends ${styles.icon}`}></i> My Network
+            <i className={`fas fa-user-friends ${styles.icon}`}></i> Network
           </button>
         </Link>
 
@@ -51,11 +59,6 @@ export default function ProfilePage() {
           </button>
         </Link>
 
-        <Link href="/logOutPage">
-        <button className={styles.topBarButton}>
-          <i className={`fa-solid fa-sign-out ${styles.icon}`}></i> LogOut
-        </button>
-        </Link>
 
       </div>
 
@@ -64,7 +67,7 @@ export default function ProfilePage() {
           {/* Toggle between UserProfile and UserProfileUpdate based on isEditing */}
           {isEditing ? <UserProfileUpdate /> : <UserProfile />}
           <button onClick={() => setIsEditing(!isEditing)} className={styles.editProfileButton}>
-            {isEditing ? 'Cancel' : 'Edit Profile'}
+          <i className="fas fa-edit"></i>{isEditing ? ' Close' : ' Edit Profile'}
           </button>
         </aside>
 
@@ -83,8 +86,6 @@ export default function ProfilePage() {
               Feed
             </button>
           </div>
-
-
 
         </div>
       </div>

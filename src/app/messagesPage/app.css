@@ -6,15 +6,28 @@
 }
 
 .ce-my-message-body.false {
-  background-color: #ff6f70 !important;
+  background-color: #045c5a !important;
+
   color: white !important;
 }
+.ce-my-message-body.ce-my-message-sending-body {
+  background-color: #045c5a !important;
+}
 .ce-custom-message-input {
-  border: 1px solid #ff6f70 !important;
+  border: 2px solid #045c5a !important;
 }
 .ce-their-message-body.false {
   background-color: #045c5a !important;
   color: white !important;
+}
+.ce-their-message-body.false {
+  background-color: #045c5a !important;
+  color: white !important;
+}
+
+.ce-their-message-timestamp {
+  color: white !important;
+  letter-spacing: -1px;
 }
 
 .ce-their-message-timestamp {
@@ -33,8 +46,8 @@
   border: 1px solid #045c5a !important;
 }
 .ce-custom-send-button {
-  background-color: #ff6f70 !important;
-  border: 1px solid #ff6f70 !important;
+  background-color: #045c5a !important;
+  border: 1px solid #045c5a !important;
 }
 .ce-chat-feed {
   background-color: #f0f0f0 !important;
@@ -47,22 +60,27 @@
   border-radius: 8px 8px 0px 0px !important;
 }
 
-.ce-chat-button {
+.ce-chat-list {
+  padding-top: 100px;
 }
 
 .ce-chat-form {
   background-color: #f0f0f0 !important;
   padding-bottom: 14px !important;
 }
-/* .ce-message-list {
+
+.ce-message-list {
   background: linear-gradient(
     0deg,
     rgba(62, 64, 75, 1) 0%,
     #999 75%,
     #999 100%
   ) !important;
-} */
-
+}
 .ce-my-message-timestamp {
-  color: #ff6f70 !important;
+  color: #045c5a !important;
+}
+.ce-custom-chat-form {
+  margin-top: 40px;
+  padding-top:30px;
 }

@@ -1,16 +1,15 @@
 const functions = require("firebase-functions");
 const axios = require("axios");
 
+
 exports.createChatEngineUser = functions.auth.user().onCreate((user) => {
-  const fullName = user.firstName + " " + user.lastName;
   axios.post(
       "https://api.chatengine.io/users/",
       {
-        username: user.fullName,
+        username: user.email,
         secret: user.uid,
         email: user.email,
-        first_name: user.firstName,
-        last_name: user.lastName, // Add comma here
+        first_name: user.displayName,
       },
       {
         headers: {
@@ -25,10 +24,8 @@ exports.deleteChatEngineUser = functions.auth.user().onDelete((user) => {
     headers: {
       "Project-ID": "a50b188a-cb5f-4ff8-960d-60c8a6cf7ffe",
       // "User-Name": user.firstName + " " + user.lastName,
-      "User-Name": user.email,
+      "User-Name": user.firstName,
       "User-Secret": user.uid,
     },
   });
 });
-
-

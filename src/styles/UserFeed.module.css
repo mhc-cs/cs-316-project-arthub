@@ -1,14 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
 .feedContainer {
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 20px;
-  background-color: #f5f5f5;
-  max-width: 600px;
+  background-color: #ffffff;
+  /* Fixed max-width */
+  max-width: 1000px;
+  /* Centering the container */
   margin-left: auto;
   margin-right: auto;
   margin-top: 5%;
-  border-radius: 8px;
+  /*border-radius: 8px;
+  /* Makes the container scrollable */
   overflow-y: auto;
 }
 
@@ -16,18 +21,22 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
+  background-color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .postHeader {
   display: flex;
   align-items: center;
   padding: 10px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .profilePic {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  /* Makes the image circular */
   object-fit: cover;
   margin-right: 10px;
 }
@@ -35,17 +44,22 @@
 .userName {
   font-size: 16px;
   font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .postImage {
   width: 100%;
   max-width: 600px;
+  /* Cover the area of the container without distorting the image */
   object-fit: contain;
+  margin-left: auto;  /* Centers the image horizontally */
+  margin-right: auto;  /* Centers the image horizontally */
 }
 
 .postDescription {
   padding: 15px;
   text-align: left;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .postingSection {
@@ -55,8 +69,9 @@
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 20px;
-  background-color: #fff;
+  background-color: #FDFD96;
   margin-top: 20px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .postInput {
@@ -84,15 +99,16 @@
 .postButton {
   padding: 10px 20px;
   border: none;
-  background-color: #C0A0C8;
+  background-color: #FF800D;
   color: white;
   border-radius: 20px;
   cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .addButton:hover,
 .postButton:hover {
-  background-color: #A885A8;
+  background-color: #FF800D;
 }
 
 .dropzone {
@@ -113,7 +129,7 @@
 }
 
 .icon {
-  color: #f00;
+  color: #ffffff;
 }
 
 /* Comments */
@@ -128,6 +144,7 @@
   align-items: flex-start;
   /* Align items to the top */
   margin-bottom: 10px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .commentProfilePic {
@@ -139,10 +156,12 @@
 
 .commentContent {
   flex-grow: 1;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .commentUser {
   font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .commentForm {
@@ -150,6 +169,7 @@
   align-items: center;
   padding: 10px;
   border-top: 1px solid #ddd;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .commentInput {
@@ -158,30 +178,33 @@
   border: 1px solid #ccc;
   border-radius: 20px;
   outline: none;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .commentButton {
   padding: 8px 16px;
   border: none;
-  background-color: #C0A0C8;
+  background-color: #FF800D;
   color: white;
   border-radius: 20px;
   cursor: pointer;
   margin-left: 10px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .commentButton:hover {
-  background-color: #A885A8;
+  background-color: #FF800D;
 }
 
 .commentText {
   margin-left: 10px;
 }
 
+
+
 /* Enforcing light theme styles under dark theme preference */
 @media (prefers-color-scheme: dark) {
 
-  .feedContainer,
   .postItem,
   .postHeader,
   .profilePic,
@@ -190,12 +213,13 @@
   .postDescription,
   .postingSection,
   .postInput {
-    background-color: #f5f5f5;
+    background-color: #e9f4f3;
     color: #000;
   }
 
   .feedContainer {
-    border: 1px solid #ddd;
+    background-color: #ffffff;
+    border: 10px solid #ffffff;
   }
 
   .profilePic {
@@ -204,25 +228,23 @@
 
   .postInput {
     background-color: #fff;
+    /* White background for input field */
     color: #000;
+    /* Dark text for input */
     border: 1px solid #ccc;
   }
 
-  .postingSection {
-    border: 1px solid #ccc;
-    background-color: #fff;
+  .addButton {
+    background-color: #ff9735;
   }
-
-  .addButton,
   .postButton {
-    border: none;
-    background-color: #C0A0C8;
+    background-color: #FF800D;
     color: white;
   }
 
   .addButton:hover,
   .postButton:hover {
-    background-color: #A885A8;
+    background-color: #FF800D;
   }
 
   /* Likes */
@@ -231,7 +253,10 @@
   }
 
   .icon {
-    color: #f00;
+    color: #ffffff;;
+  }
+  .icon2 {
+    color: #FF800D;;
   }
 
   /* Comments */
@@ -248,11 +273,11 @@
   }
 
   .commentButton {
-    background-color: #C0A0C8;
+    background-color: #FF800D;
     color: white;
   }
 
   .commentButton:hover {
-    background-color: #A885A8;
+    background-color: #FF800D;
   }
 }

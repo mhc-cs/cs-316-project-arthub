@@ -3,12 +3,16 @@
 import React, { useEffect } from 'react';
 import styles from './page.module.css';
 
+import Image from 'next/image';
+import FullLogoWhite from './design/FullLogoWhite.png';
+import BGPicture from './design/BGPicture.png'
+
 //import GragientBG from './design/GradientBG'
 
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 
-import {firebaseConfig} from '../firebase/firebaseConfig';
+import { firebaseConfig } from '../firebase/firebaseConfig';
 import { doc, setDoc, getDoc, getFirestore } from 'firebase/firestore';
 
 // Initialize Firebase
@@ -33,6 +37,7 @@ const FirstScreen = () => {
               firstName: 'First Name',
               lastName: 'Last Name',
               profilePictureUrl: 'https://placehold.co/100x100',
+              profileBGPictureUrl: 'https://placehold.co/100x100',
             }, { merge: true });
             console.log("Document created");
           } catch (error) {
@@ -69,18 +74,18 @@ const FirstScreen = () => {
 
     <div className={styles.container}>
 
-      <div className={styles.loginContainer}>
-      <div className="box"></div>
-        <img src="https://i.pinimg.com/originals/b8/c5/b1/b8c5b1b6c6fa24e202ea0e8fe7ed988d.png" alt="Decorative icon" className={styles.icon}/>
-        <button onClick={() => signInWithGoogle(true)} className={styles.topBarButton}>
-          SIGN UP WITH GOOGLE
-        </button>
-        <button onClick={() => signInWithGoogle(false)} className={styles.topBarButton}>
-          LOGIN WITH GOOGLE
-        </button>
-      </div>
-
+    <div className={styles.loginContainer}>
+    <div className="box"></div>
+      <Image src={FullLogoWhite} alt="Decorative icon" className={styles.BGPicture}/>
+      <button onClick={() => signInWithGoogle(true)} className={styles.topBarButton}>
+        SIGN UP WITH GOOGLE
+      </button>
+      <button onClick={() => signInWithGoogle(false)} className={styles.topBarButton}>
+        LOGIN WITH GOOGLE
+      </button>
     </div>
+
+  </div>
   );
 };
 

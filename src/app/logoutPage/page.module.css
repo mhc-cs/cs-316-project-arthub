@@ -1,18 +1,18 @@
 .container {
-  background-image: url('./design/BGPicture.png');
-  background-size: cover;  /* Cover the entire container */
+  background-image: url("../design/BGPicture.png");
+  background-size: cover; /* Cover the entire container */
   background-position: center; /* Center the background image */
   display: flex;
   justify-content: center; /* Centers horizontally in the flex container */
   align-items: center; /* Centers vertically in the flex container */
   height: 100vh; /* Full height of the viewport */
   width: 100%; /* Full width of the container */
-  background-color: #045C5A; /* Fallback background color */
+  background-color: #045c5a; /* Fallback background color */
 }
 
 .loginContainer {
   width: 20%; /* Example: use a percentage of the viewport or container width */
-  height: 20%; 
+  height: 20%;
   display: flex; /* Creates three columns with equal width */
   justify-items: center; /* Horizontally centers content within each grid cell */
   flex-direction: column;
@@ -22,15 +22,15 @@
 }
 
 .topBarButton {
-  width: 150px;  /* Example fixed width */
-  height: 75px;  /* Example fixed height */
+  width: 150px; /* Example fixed width */
+  height: 75px; /* Example fixed height */
   display: flex;
   align-items: center;
   justify-content: center; /* Horizontally center content within the flex container */
   padding: 10px 20px;
   margin-top: 10px;
   border: none;
-  background-color: #FF800D;
+  background-color: #ff800d;
   color: white;
   cursor: pointer;
   font-size: 16px;
@@ -39,7 +39,7 @@
   border-radius: 10px; /* Adjust this value to increase or decrease roundness of buttons */
   text-decoration: none;
   transition: background-color 0.3s;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .topBarButton:hover {
@@ -53,7 +53,7 @@
 }
 
 .box {
-  width: 27%;  /* Set the width of the box */
+  width: 27%; /* Set the width of the box */
   height: 200px; /* Set the height of the box */
   margin: 20px; /* Add some margin for spacing around the box */
 }
@@ -61,5 +61,5 @@
 .testBG {
   width: 100%;
   height: auto;
-  z-index: 10;  
+  z-index: 10;
 }

@@ -1,6 +1,7 @@
 .main {
   display: flex;
   flex-direction: row;
+  /* Aligns sidebar and content horizontally */
   justify-content: space-between;
   align-items: center;
   padding: 6rem;
@@ -14,7 +15,7 @@
 
 .sidebar {
   flex: 1;
-  max-width: 240px;
+  max-width: 300px;
   min-width: 200px;
 }
 
@@ -24,6 +25,7 @@
   flex-direction: column;
   background-color: #f5f5f5;
   max-width: 675px;
+  width: 200px;
   background-color: transparent;
   margin-left: auto;
   margin-right: auto;
@@ -34,35 +36,65 @@
 }
 
 .topBar {
-  position: fixed;
-  top: 0;
-  left: 0;
+  /*background-image: linear-gradient(
+    to right,
+    #045C5A 0%, /* Start with Dark Teal at 0% */
+  /*  #045C5A 20%, /* Continue Dark Teal until 50% */
+  /*  #30D5C8 80%, /* Start Pastel Yellow right at 50% */
+  /*  #30D5C8 100% /* Continue Pastel Yellow to 100% */
+  /*);*/
+  background-image: url('../design/TopBar.jpeg');
+  background-size: cover;  /* Cover the entire container */
   width: 100%;
+  height: 100px;
+  position: fixed;
+  /* Fix the position relative to the viewport */
+  top: 0;
+  /* Align the top edge of the element with the top of the viewport */
+  left: 0;
+  /* Align the left edge of the element with the left of the viewport */
+  /* Ensure it spans the full width of the viewport */
   z-index: 1000;
+  /* Ensure it sits above other content */
   display: flex;
   align-items: center;
-  background-color: #C0A0C8;
-  padding: 10px 20px;
+  /*padding: 10px 20px;
+  /* Adjust padding as needed */
   gap: 20px;
+  /* Space between items */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
- 
+}
+
+.logo {
+  margin-left: 50px;
+  margin-right: 10px; 
+  height: 100px;
+  width: auto;
 }
 
 .searchBarContainer {
-  margin-left: 10%;
-  margin-right: 15%;
+  margin-left: 5%;
+  margin-right: 10px;
   justify-content: center;
+  border-radius: 8px; /* Rounded edges */
+  /* Center the search bar within its container */
 }
 
 .topBarButton {
-  background-color: #f0f0f0;
+  background-color: #ffffff;
+  /* Light grey background */
+  border: 1px solid #ccc;
   border: none;
   padding: 10px 20px;
   border-radius: 8px;
+  /* Rounded edges for buttons */
   cursor: pointer;
   font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
   transition: background-color 0.3s;
   margin-right: 1%;
+  max-width: 125px;
+  align-items: center;
 }
 
 .topBarButton:hover {
@@ -70,12 +102,13 @@
 }
 
 .icon {
-  color: #777;
+  color: #045C5A;
   margin-right: 5px;
 }
 
 .layoutContainer {
   margin-top: 3%;
+  background-color: #d8ebea;
   display: flex;
 }
 
@@ -91,25 +124,40 @@
   align-items: center;
   top: 3%;
   right: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .button {
   writing-mode: vertical-rl; /* Make text go vertically */
   padding: 9px;
-  background-color: #C0A0C8;
+  background-color: #045C5A;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   color: #FFF;
   border: 1px solid #ccc;
   font-size: 15px;
   transition: background-color 0.3s;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .button:hover {
-  background-color: #A885A8;
+  background-color: #045C5A;
 }
 
 .buttonHighlighted {
-  background-color: #A885A8; 
+  background-color: #045C5A; 
+}
+
+.editProfileButton {
+  padding: 9px;
+  background-color: #045C5A;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #FFF;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: background-color 0.3s;
+  margin-left: 60px;
+  border-radius: 2px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -120,22 +168,61 @@
   .icon,
   .layoutContainer
   {
-    background-color: #dfe3e4;
+    background-color: #d8ebea;
     color: #000;
+    font-family: 'Open Sans', sans-serif;
   }
   
   .mainContent {
-    background-color: #f5f5f5;
-    background-color: transparent;
+    flex: 3;
+    /* Adjust based on your design */
+    display: flex;
+    flex-direction: column;
+    background-color: #d8ebea;
   }
 
   .topBar {
-    background-color: #C0A0C8;
+    position: fixed;
+    /* Fix the position relative to the viewport */
+    top: 0;
+    /* Align the top edge of the element with the top of the viewport */
+    left: 0;
+    /* Align the left edge of the element with the left of the viewport */
+    width: 100%;
+    /* Ensure it spans the full width of the viewport */
+    z-index: 1000;
+    /* Ensure it sits above other content */
+    display: flex;
+    align-items: center;
+    background-color: #045C5A;
+    padding: 10px 20px;
+    /* Adjust padding as needed */
+    gap: 20px;
+    /* Space between items */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
+
   .topBarButton {
-    background-color: #dfe3e4;
+    background-color: #ffffff;
+    /* Light grey background */
+    border: 1px solid #ccc;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 14px;
+    /* Rounded edges for buttons */
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    transition: background-color 0.3s;
+    margin-right: 1%;
+    display: flex; 
+    width: 100px;
+    height: 60px;
+    flex-direction: column; /* Aligns children vertically */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
   .topBarButton:hover {
@@ -143,20 +230,27 @@
   }
 
   .icon {
-    color: #777;
+    height: 40px;
+    width: 40px;
+    color: #045C5A;
+    font-size: 20px; 
+    /* Icon color */
+    margin-right: 5px;
+    background-color: transparent;
+    
   }
 
   .button {
-    background-color: #C0A0C8;
+    background-color: #045C5A;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     color: #FFF;
     border: 1px solid #ccc;
   }
 
   .button:hover {
-    background-color: #A885A8;
+    background-color: #045C5A;
   }
   .buttonHighlighted {
-    background-color: #A885A8; 
+    background-color: #045C5A; 
   }
 }
