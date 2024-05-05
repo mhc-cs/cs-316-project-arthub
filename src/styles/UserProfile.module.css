@@ -14,7 +14,7 @@
   border: 1px solid #045C5A;
 
   margin-left: 20%;
-  margin-top: 25%;
+  margin-top: 35%;
 }
 
 .profileBGPic {
@@ -55,6 +55,7 @@
   text-align: center;
   z-index: 2;
   font-family: 'Open Sans', sans-serif;
+  
 }
 
 .userName {
@@ -78,6 +79,16 @@
 .userLocation {
   font-size: 12px;
   font-family: 'Open Sans', sans-serif;
+}
+
+.userPronouns {
+  text-align: center; 
+  font-style: italic; /* Makes the text italic */
+}
+
+.userArtistStatement, .userCreativeNiche {
+  text-align: center; 
+  margin: 5px 0;
 }
 
 .userStats {
