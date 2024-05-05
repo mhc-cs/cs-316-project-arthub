@@ -33,21 +33,22 @@ export default function UserProfile() {
 
     return (
       <div className={styles.profileContainer}>
-        <div className={styles.BGContainer}>
-          {/* Conditionally render data if userData is not null */}
-        {userData && (
-          <>
-            <img src={userData.profilePictureUrl} alt="User Profile" className={styles.profilePic}/>
-            
-          </>
-        )}
-        </div>
         {/* Conditionally render data if userData is not null */}
         {userData && (
           <>
-            <img src={userData.profilePictureUrl} alt="User Profile" className={styles.profilePic}/>
-            
+            {/* <div className={styles.BGContainer}>
+              <img src={userData.profileBGPictureUrl} alt="BG Profile" className={styles.profileBGPic}/>
+              <div className={styles.profilePicContainer}>
+                <img src={userData.profilePictureUrl} alt="User Profile" className={styles.profilePic}/>
+              </div>
+            </div> */}
+
+            <img src={userData.profileBGPictureUrl} alt="BG Profile" className={styles.profileBGPic}/>
+
             <div className={styles.profileDetails}>
+
+              <img src={userData.profilePictureUrl} alt="User Profile" className={styles.profilePic}/>
+
               <h2 className={styles.userName}>
                 {user && (
                   <Link href={`/profilePage`}>

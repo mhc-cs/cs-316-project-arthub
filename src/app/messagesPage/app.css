@@ -69,14 +69,18 @@
   padding-bottom: 14px !important;
 }
 
+
 .ce-message-list {
+
   background: linear-gradient(
     0deg,
     rgba(62, 64, 75, 1) 0%,
     #999 75%,
     #999 100%
   ) !important;
+
 }
+
 .ce-my-message-timestamp {
   color: #045c5a !important;
 }

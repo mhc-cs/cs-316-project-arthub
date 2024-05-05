@@ -40,9 +40,10 @@ export default function homePage() {
           <i className={`fa-solid fa-bell ${styles.icon}`}></i> Notifications</button>
         </Link>
 
-        <Link href="/logoutPage">
+        <Link href="/logOutPage">
         <button className={styles.topBarButton}>
-          <i className={`fa-solid fa-sign-out ${styles.icon}`}></i> Logout</button>
+          <i className={`fa-solid fa-sign-out ${styles.icon}`}></i> LogOut
+        </button>
         </Link>
 
   
@@ -51,6 +52,7 @@ export default function homePage() {
   
     <div className={styles.layoutContainer}>
       <aside className={styles.sidebar}>
+        profileDetails
         <UserProfile />
       </aside>
     <div className={styles.mainContent}>

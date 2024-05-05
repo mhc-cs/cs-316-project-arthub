@@ -3,36 +3,51 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 20px;
-  gap: 10px; 
+  gap: 20%;
   background-color: #ffffff;
   width: 120%; /* Start with a relative width */
   max-width: 300px; /* But don't exceed 300px */
+
   /*border-radius: 0px;*/
   border: 1px solid #045C5A;
 
   margin-left: 20%;
-  margin-top: 25%;
+  margin-top: 35%;
 }
 
-.backgroundPic {
+.profileBGPic {
   width: 100%; /* Ensure it covers the container width */
-  height: 50px; /* Adjust as needed */
+  height: 60px; /* Adjust as needed */
+  object-fit: cover;
+  border-top-left-radius: 0px; /* Match container's border radius */
+  border-top-right-radius: 0px;
+  position: absolute;
+  top: 0;
+  border-bottom: 2px solid #045C5A;
+  opacity: 0.9;
+}
+
+.profilePic {
+  width: auto; /* Adjust size as needed */
+  height: 30%; /* Adjust size as needed */
+  border-radius: 50%; /* Creates a circular image */
+  object-fit: cover;
+  border: 1px solid #ccc;
+  margin-left: 30%;
+  border: 1px solid #045C5A;
+}
+
+.profileDetails {
+  width: 100%; /* Ensure it covers the container width */
+  height: 100%; /* Adjust as needed */
   object-fit: cover;
   border-top-left-radius: 8px; /* Match container's border radius */
   border-top-right-radius: 8px;
   position: absolute;
   top: 0;
-  z-index: -1;
-}
-
-.profilePic {
-  width: 100px; /* Adjust size as needed */
-  height: 100px; /* Adjust size as needed */
-  border-radius: 50%; /* Creates a circular image */
-  object-fit: cover;
-  border: 1px solid #ccc;
-  z-index: 2;
+  align-items: center;
 }
 
 
@@ -40,6 +55,7 @@
   text-align: center;
   z-index: 2;
   font-family: 'Open Sans', sans-serif;
+  
 }
 
 .userName {
@@ -65,13 +81,23 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+.userPronouns {
+  text-align: center; 
+  font-style: italic; /* Makes the text italic */
+}
+
+.userArtistStatement, .userCreativeNiche {
+  text-align: center; 
+  margin: 5px 0;
+}
+
 .userStats {
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* Align items to the start (left) */
   width: 100%;
   gap: 8px; 
-  margin-top: 5%;
+  margin-top: 120%;
   font-size: 12px;
   font-family: 'Open Sans', sans-serif;
 }

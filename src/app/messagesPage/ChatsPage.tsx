@@ -4,6 +4,7 @@ import { PrettyChatWindow } from "react-chat-engine-pretty";
 import Link from 'next/link';
 
 
+
 import  "./app.css";
 import NavBar from '../../components/NavBar';
 
@@ -22,8 +23,10 @@ export default function Page(props: ChatProps) {
         <NavBar/>
       </div>
     <div style={{ height: "100vh" }}>
+
       <PrettyChatWindow
         projectId={"a50b188a-cb5f-4ff8-960d-60c8a6cf7ffe"}
+
         username={props.user.email|| ""}
         secret={props.user.uid}
         style={{ height: "100%" }}
@@ -31,5 +34,7 @@ export default function Page(props: ChatProps) {
 
    </div>   
     </div>
+  </div>
+</div>
   );
 }

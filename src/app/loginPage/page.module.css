@@ -28,6 +28,7 @@
   font-weight: bold;
   color: black; /* Text color for buttons */
   font-family: "Open Sans", sans-serif;
+
 }
 
 .formInput,
@@ -52,7 +53,7 @@
 
 .formButton {
   padding: 10px 15px;
-  background-color: #007bff;
+  background-color: #045c5a;
   color: black;
   border: none;
   border-radius: 4px;
@@ -62,5 +63,5 @@
 }
 
 .formButton:hover {
-  background-color: #0056b3;
+  background-color: #045c5a;
 }

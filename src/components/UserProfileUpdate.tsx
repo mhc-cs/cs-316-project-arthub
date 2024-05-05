@@ -4,6 +4,7 @@ import styles from '../styles/UserProfileUpdate.module.css';
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import { firebaseConfig } from '../firebase/firebaseConfig';
+
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { doc, setDoc, getDoc, getFirestore, updateDoc } from 'firebase/firestore';
 
@@ -24,6 +25,7 @@ const UserProfileUpdate: React.FC = () => {
     lastName: '',
     dateOfBirth: new Date(),
     profilePictureUrl: '',
+    profileBGPictureUrl: '',
     gender: '',
     pronouns: '',
     artistStatement: '',
@@ -40,6 +42,12 @@ const UserProfileUpdate: React.FC = () => {
     console.log(`Current profile picture URL: ${formData.profilePictureUrl}`);
     // Additional actions based on the change can also be placed here
   }, [formData.profilePictureUrl]); // Dependency array to trigger the effect when formData.profilePictureUrl changes
+
+  useEffect(() => {
+    console.log(`Current BG profile picture URL: ${formData.profileBGPictureUrl}`);
+    // Additional actions based on the change can also be placed here
+  }, [formData.profileBGPictureUrl]); // Dependency array to trigger the effect when formData.profilePictureUrl changes
+
 
   // Fetch user data on component mount and user change
   useEffect(() => {
@@ -92,7 +100,7 @@ const UserProfileUpdate: React.FC = () => {
 const handleBGImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
   if (event.target.files && event.target.files.length > 0 && user) {
       const file = event.target.files[0];
-      const fileRef = storageRef(storage, `profilePictures/${user.uid}`);
+      const fileRef = storageRef(storage, `profileBGPictures/${user.uid}`);
 
       try {
           await uploadBytes(fileRef, file);
@@ -135,68 +143,65 @@ const handleBGImageChange = async (event: React.ChangeEvent<HTMLInputElement>) =
 
   return (
     <div className={styles.window}>
-      <header className={styles.header}>
-        <h1>Edit Profile</h1>
-      </header>
+      {/* Conditionally render data if userData is not null */}
+      {userData && (
+          <>
+      
+      <img src={userData.profileBGPictureUrl} alt="BG Profile" className={styles.profileBGPic}/>
+
       <div className={styles.content}>
-      {userData ? (
-        <>
-          <img src={userData.profileBGPictureUrl} alt="User Profile" className={styles.profileBGPic} />
-        </>
-      ) : (
-        <p>No user data available</p> /* This will display if userData is null */
-      )}
-    </div>
-      <div className={styles.content}>
+
+      <img src={userData.profilePictureUrl} alt="User Profile" className={styles.profilePic}/>
+
         <form className={styles.form} onSubmit={handleSaveChanges}>
 
         <div className={styles.inputGroup}>
-            <label htmlFor="profilePicture">Background Profile Picture:</label>
+            <label htmlFor="profilePicture">Background Profile Picture: </label>
             <input type="file" id="profileBGPicture" name="profileBGPicture" className={styles.fileInput} onChange={handleBGImageChange} />
           </div>
 
         <div className={styles.inputGroup}>
-            <label htmlFor="profilePicture">Profile Picture:</label>
+            <label htmlFor="profilePicture">Profile Picture: </label>
             <input type="file" id="profilePicture" name="profilePicture" className={styles.fileInput} onChange={handleImageChange} />
           </div>
 
           <div className={styles.inputGroup}>
-            <label htmlFor="firstName">First Name:</label>
+            <label htmlFor="firstName">First Name: </label>
             <input type="text" id="firstName" name="firstName" className={styles.textInput} value={formData.firstName} onChange={handleInputChange} />
           </div>
 
           <div className={styles.inputGroup}>
-            <label htmlFor="lastName">Last Name:</label>
+            <label htmlFor="lastName">Last Name: </label>
             <input type="text" id="lastName" name="lastName" className={styles.textInput} value={formData.lastName} onChange={handleInputChange} />
           </div>
 
           <div className={styles.inputGroup}>
-            <label htmlFor="pronouns">Pronouns:</label>
+            <label htmlFor="pronouns">Pronouns: </label>
             <input type="text" id="pronouns" name="pronouns" className={styles.textInput} value={formData.pronouns} onChange={handleInputChange} />
           </div>
 
           <div className={styles.inputGroup}>
-            <label htmlFor="artistStatement">Artist Statement:</label>
+            <label htmlFor="artistStatement">Artist Statement: </label>
             <input type="text" name="artistStatement" className={styles.textInput} value={formData.artistStatement} onChange={handleInputChange} />
           </div>
 
           <div className={styles.inputGroup}>
-            <label htmlFor="creativeNiche">Creative Niche:</label>
+            <label htmlFor="creativeNiche">Creative Niche: </label>
             <input type="text" name="creativeNiche" className={styles.textInput} value={formData.creativeNiche} onChange={handleInputChange} />
           </div>
 
           <div className={styles.inputGroup}>
-            <label htmlFor="city">City:</label>
+            <label htmlFor="city">City: </label>
             <input type="text" name="city" className={styles.textInput} value={formData.city} onChange={handleInputChange} />
           </div>
 
           <div className={styles.inputGroup}>
-            <label htmlFor="work">Work:</label>
+            <label htmlFor="work">Work: </label>
             <input type="text" name="work" className={styles.textInput} value={formData.work} onChange={handleInputChange} />
           </div>
 
           <div className={styles.inputGroup}>
-            <label htmlFor="education">Education:</label>
+            <label htmlFor="education">Education: </label>
             <input type="text" name="education" className={styles.textInput} value={formData.education} onChange={handleInputChange} />
           </div>
 
@@ -205,6 +210,8 @@ const handleBGImageChange = async (event: React.ChangeEvent<HTMLInputElement>) =
           </footer>
         </form>
       </div>
+      </> 
+      )}
     </div>
   );
 };

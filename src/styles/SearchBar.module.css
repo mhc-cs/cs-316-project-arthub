@@ -1,67 +1,71 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
 .searchContainer {
-    display: flex;
-    align-items: center;
-    background-color: 'transparent'; 
-    padding: 0px;
-    border-radius: 8px; /* Rounded edges */
-    width: 25%;
-  }
-  .inputContainer {
-    position: relative;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    border-radius: 8px; 
-    font-family: 'Open Sans', sans-serif;
-    
+  display: flex;
+  align-items: center;
+  background-color: 'transparent';
+  padding: 0px;
+  height: 50px;
 }
-  
-  .searchInput {
-    padding: 10px 10px 10px 40px;
-    font-size: 14px;
-    font-family: 'Open Sans', sans-serif;
-    border-radius: 8px; 
-    background-color: #f0f0f0; /* Light grey background */
-    border: 1px solid #ccc;
-    background-image: none;
-  }
-  .searchInput:focus {
-    outline: none; /* Removes the outline on focus */
-  }
-  .icon {
-    position: absolute;
-    color: #777; /* Icon color */
-    left: 12px; 
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Ensures precise centering */
-    font-size: 15px;
-    z-index: 10; /* Ensures the icon is above the input background */
-  }
-  
+
+.inputContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif;
+  height: 50px;
+
+}
+
+.searchInput {
+  padding: 10px 10px 10px 40px;
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  /* Light grey background */
+  border: 1px solid #ccc;
+  background-image: none;
+  height: 50px;
+}
+
+.searchInput:focus {
+  outline: none;
+  /* Removes the outline on focus */
+}
+
+.icon {
+  position: absolute;
+  color: #045C5A;
+  /* Icon color */
+  left: 12px;
+  top: 50%;
+  /* Center vertically */
+  transform: translateY(-50%);
+  /* Ensures precise centering */
+  font-size: 15px;
+  z-index: 10;
+  /* Ensures the icon is above the input background */
+}
+
 /* Enforcing light theme styles under dark theme preference */
 @media (prefers-color-scheme: dark) {
+
   .searchContainer {
-    background-color: 'transparent'; 
+    background-color: 'transparent';
   }
+
   .inputContainer {
-    background-color: 'transparent'; 
-}
-  
+    background-color: 'transparent';
+
+  }
+
   .searchInput {
-    padding: 10px 10px 10px 40px; /* Makes room for the icon */
-    font-size: 14px; /* Slightly larger text */
-    border-radius: 0px; /* Rounded edges */
-    background-color: #dfe3e4; /* Light grey background */
+    background-color: #f0f0f0;
     border: 1px solid #ccc;
-    background-image: none;
-    color: #000;
   }
-  .searchInput:focus {
-    outline: none; /* Removes the outline on focus */
-  }
+
   .icon {
-    color: #777; /* Icon color */
+    color: #045C5A;
   }
 }

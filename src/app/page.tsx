@@ -5,14 +5,16 @@ import styles from './page.module.css';
 
 import Image from 'next/image';
 import FullLogoWhite from './design/FullLogoWhite.png';
-import BGPicture from './design/BGPicture.png'
 
-//import GragientBG from './design/GradientBG'
+//import BGPicture from './design/BGPicture.png'
+
 
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 
+
 import { firebaseConfig } from '../firebase/firebaseConfig';
+
 import { doc, setDoc, getDoc, getFirestore } from 'firebase/firestore';
 
 // Initialize Firebase
@@ -72,8 +74,7 @@ const FirstScreen = () => {
 
   return (
 
-    <div className={styles.container}>
-
+    <div className={styles.container} >
     <div className={styles.loginContainer}>
     <div className="box"></div>
       <Image src={FullLogoWhite} alt="Decorative icon" className={styles.BGPicture}/>
@@ -86,6 +87,7 @@ const FirstScreen = () => {
     </div>
 
   </div>
+
   );
 };
 

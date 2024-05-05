@@ -200,6 +200,21 @@ const Feed = () => {
     }
   };
 
+  const formatTextWithHashtags = (text: string) => {
+    const hashtagRegex = /(#\w+)/g;
+    const parts = text.split(hashtagRegex);
+    
+    return (
+      <>
+        {parts.map(part => 
+          hashtagRegex.test(part) ? <span style={{ color: '#0080ff' }}>{part}</span> : part
+        )}
+      </>
+    );
+  };
+  
+  
+
   return (
 
     <div className={styles.feedContainer}>
@@ -237,7 +252,9 @@ const Feed = () => {
             <img src={post.userProfilePic} alt="User" className={styles.profilePic} />
             <div className={styles.userName}> {post.userName}</div>
           </div>
-          <div className={styles.postDescription}>{post.description}</div>
+          <div className={styles.postDescription}>
+          {formatTextWithHashtags(post.description)}
+            </div>
           <img src={post.mediaContent} alt="Post Content" className={styles.postImage} />
 
           <div className={styles.interactions}>
@@ -251,7 +268,11 @@ const Feed = () => {
                 <div key={index} className={styles.comment}>
                   <div className={styles.commentContent}>
                     <span className={styles.commentUser}>{comment.userName}:</span>
-                    <span className={styles.commentText}>{comment.comment}</span>
+                    <span className={styles.commentText}>
+                    <span className={styles.commentText}>
+                      {formatTextWithHashtags(comment.comment)}
+                      </span>
+                      </span>
                   </div>
                 </div>
               ))}

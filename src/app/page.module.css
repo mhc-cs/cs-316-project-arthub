@@ -1,5 +1,5 @@
 .container {
-  background-image: url('./design/BGPicture.png');
+  background-image: url(./design/BGPicture.png);
   background-size: cover;  /* Cover the entire container */
   background-position: center; /* Center the background image */
   display: flex;
@@ -39,7 +39,6 @@
   border-radius: 10px; /* Adjust this value to increase or decrease roundness of buttons */
   text-decoration: none;
   transition: background-color 0.3s;
-  font-family: 'Open Sans', sans-serif;
 }
 
 .topBarButton:hover {

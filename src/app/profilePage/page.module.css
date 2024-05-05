@@ -119,12 +119,12 @@
 
 .buttonsContainer {
   display: flex;
-  position: absolute; /* Position the buttons absolutely relative to their positioned parent */
   flex-direction: column; /* Stack buttons vertically */
   align-items: center;
-  top: 3%;
-  right: 0;
-  font-family: 'Open Sans', sans-serif;
+  margin-left: auto; /* Pushes the container to the right */
+  padding: 10px; /* Adds some padding around the buttons */
+  margin-top: 25px;
+  z-index: 10;
 }
 
 .button {
@@ -174,11 +174,10 @@
   }
   
   .mainContent {
-    flex: 3;
-    /* Adjust based on your design */
-    display: flex;
-    flex-direction: column;
-    background-color: #d8ebea;
+    display: flex; /* Enable Flexbox */
+    flex-direction: row; /* Align children side by side */
+    align-items: start; /* Align items to the top */
+    background-color: #d8ebea; /* Your existing background color */
   }
 
   .topBar {

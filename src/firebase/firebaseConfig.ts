@@ -45,3 +45,4 @@ function GetUser() {
 const firestore = getFirestore(app);
 
 export { auth, db, app, firestore, GetUser, firebaseConfig};
+

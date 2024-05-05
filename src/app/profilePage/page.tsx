@@ -8,10 +8,12 @@ import UserFeed from '../../components/UserFeed';
 import SearchBar from '../../components/SearchBar';
 import UserProfile from '../../components/UserProfile';
 
+
 import Image from 'next/image';
 import LogoWhite from '../design/LogoWhite.png';
 
 //import { signIn } from 'next-auth/react';
+
 
 import UserProfileUpdate from '../../components/UserProfileUpdate';
 
@@ -22,8 +24,6 @@ import Link from 'next/link';
 export default function ProfilePage() {
 
   const [activeView, setActiveView] = useState('Portfolio'); // Start with Portfolio
-
-
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -66,9 +66,11 @@ export default function ProfilePage() {
         <aside className={styles.sidebar}>
           {/* Toggle between UserProfile and UserProfileUpdate based on isEditing */}
           {isEditing ? <UserProfileUpdate /> : <UserProfile />}
+
           <button onClick={() => setIsEditing(!isEditing)} className={styles.editProfileButton}>
           <i className="fas fa-edit"></i>{isEditing ? ' Close' : ' Edit Profile'}
           </button>
+
         </aside>
 
         <div className={styles.mainContent}>
