@@ -79,7 +79,12 @@
     #999 100%
   ) !important;
 
+}
 
 .ce-my-message-timestamp {
   color: #045c5a !important;
+}
+.ce-custom-chat-form {
+  margin-top: 40px;
+  padding-top:30px;
 }

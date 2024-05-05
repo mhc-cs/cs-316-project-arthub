@@ -1,6 +1,7 @@
 const functions = require("firebase-functions");
 const axios = require("axios");
 
+
 exports.createChatEngineUser = functions.auth.user().onCreate((user) => {
   const fullName = user.firstName + " " + user.lastName;
   axios.post(
@@ -9,8 +10,8 @@ exports.createChatEngineUser = functions.auth.user().onCreate((user) => {
         username: user.fullName,
         secret: user.uid,
         email: user.email,
-        first_name: user.firstName,
-        last_name: user.lastName, // Add comma here
+        first_name: user.displayName,
+
       },
       {
         headers: {

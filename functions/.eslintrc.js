@@ -14,6 +14,10 @@ module.exports = {
     "no-restricted-globals": ["error", "name", "length"],
     "prefer-arrow-callback": "error",
     "quotes": ["error", "double", {"allowTemplateLiterals": true}],
+    // prettier-ignore
+    "indent": ["off", "always"],
+    "object-curly-spacing": ["off", "always"],
+    "@typescript-eslint/no-var-requires": ["off", "always"],
   },
   overrides: [
     {
